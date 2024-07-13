@@ -13,7 +13,7 @@ Server Name: WebServer01
 IP Address: 192.168.1.100
 OS: Ubuntu 20.04
 ```
-I saved the file using ctrl+s command and later using ctrl+x command.
+I saved the file using ctrl+s command and exited using ctrl+x command.
 
 -----
 
@@ -29,13 +29,13 @@ Configuration Complete: Yes
 
 ![alt text](/images/image-2.png)
 
-We have to press escape key then write wq! whre w is for save q is for quit and ! is for forceful execution.
+We have to press escape key then write wq! where w is for save q is for quit and ! is for forceful execution.
 
 ```
 wq!
 ```
 -----
-- Next, I have used to the cat command to see the context within the server_config.txt file I created using nano command.
+- Next, I have used to the cat command to see the context inside the server_config.txt file which I created using nano and vim command.
 
 ```
 cat server_config.txt
@@ -44,7 +44,7 @@ cat server_config.txt
 -----
 
 
-- Next, I added a user named developer using a command adduser.
+- Next, I added a user named "developer" using a command adduser.
 
 ```
 sudo adduser developer
@@ -52,7 +52,7 @@ sudo adduser developer
 ![alt text](/images/image-3.png)
 
 -----
-- I have also added a group named devteam using the command groupadd.
+- I have also added a group named "devteam" using the command groupadd.
 
 ```
 sudo groupadd devteam
@@ -60,7 +60,7 @@ sudo groupadd devteam
 ![alt text](/images/image-4.png)
 
 -----
-- In the below image, I have removed a user named developer from the group called devteam using command gpasswd -d.
+- In the below image, I have removed a user named "developer" from the group called "devteam" using command gpasswd -d.
 
 ```
 sudo gpasswd -d developer devteam
@@ -129,7 +129,7 @@ top
 
 -----
 
-- Furthermore, I have used the nice command which lets me run a command at a priority lower than the command's normal priority.
+- Furthermore, I have also used the nice command which lets me run a particular command at a priority lower than the command's normal priority.
 ```
 nice -n 10 sleep 100 &
 ```
@@ -147,8 +147,8 @@ nice -n 10 sleep 100 &
 ![alt text](/images/image-13.png)
 
 
-- Furthermore, I have also created three files in it and added content inside it using vim command.
-- Not only this, I have also added a logo.png image which will appear on my website.
+- I have created three files in it and added content inside it using vim command.
+- Not only this, I have also added a logo.png image which will appear on my webpage.
 
 ![alt text](/images/image-14.png)
 
@@ -188,13 +188,25 @@ The content of index.html is:
 
 ```
 -----
-- Next, I have disabled original apache2 configuration file using the command sudo a2dissite 000-default.conf and enabled the configuration file for my staticwebsite using the command sudo a2ensite mystaticwebsite.conf and then reloaded the service using systemctl command.
+- Next, I have disabled original apache2 configuration file using the below command:
+```
+sudo a2dissite 000-default.conf 
+```
+and enabled the configuration file for my staticwebsite using the command:
+```
+sudo a2ensite mystaticwebsite.conf
+``` 
+and then reloaded the service using systemctl command.
 
 ![alt text](/images/image-15.png)
 ------
 
-- Now I got the IP address of my local system using the command ifconfig.
-- When I hit that IP into tge browser, I was able to get my desired webpage as shown in below image.
+- Now I got the IP address of my local system using the command:
+```
+ifconfig
+```
+
+- When I hit that IP of my local machine in the browser, I was able to get my desired webpage as shown in below image.
 
 ![alt text](/images/image-16.png)
 ---
