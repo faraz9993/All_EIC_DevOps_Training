@@ -27,7 +27,7 @@ vim server_config.txt
 Configuration Complete: Yes
 ```
 
-![alt text](/images/image-2.png)
+![alt text](/images/Day_1_Images/image-2.png)
 
 We have to press escape key then write wq! where w is for save q is for quit and ! is for forceful execution.
 
@@ -40,7 +40,7 @@ wq!
 ```
 cat server_config.txt
 ```
-![alt text](/images/image-1.png)
+![alt text](/images/Day_1_Images/image-1.png)
 -----
 
 
@@ -49,7 +49,7 @@ cat server_config.txt
 ```
 sudo adduser developer
 ```
-![alt text](/images/image-3.png)
+![alt text](/images/Day_1_Images/image-3.png)
 
 -----
 - I have also added a group named "devteam" using the command groupadd.
@@ -57,7 +57,7 @@ sudo adduser developer
 ```
 sudo groupadd devteam
 ```
-![alt text](/images/image-4.png)
+![alt text](/images/Day_1_Images/image-4.png)
 
 -----
 - In the below image, I have removed a user named "developer" from the group called "devteam" using command gpasswd -d.
@@ -65,7 +65,7 @@ sudo groupadd devteam
 ```
 sudo gpasswd -d developer devteam
 ```
-![alt text](/images/image-5.png)
+![alt text](/images/Day_1_Images/image-5.png)
 
 ------
 - Further, I have used ls -l command to see the long listing of the file inside the present directory as it shows the permissions and ownership of the files and directories.
@@ -73,7 +73,7 @@ sudo gpasswd -d developer devteam
 ```
 ls -l server_config.txt
 ```
-![alt text](/images/image-6.png)
+![alt text](/images/Day_1_Images/image-6.png)
 
 ------
 
@@ -82,7 +82,7 @@ ls -l server_config.txt
 ```
 chmod 644 server_config.txt
 ```
-![alt text](/images/image-7.png)
+![alt text](/images/Day_1_Images/image-7.png)
 
 ----
 - Later, I have downloaded the apache2.service using apt install command.
@@ -95,7 +95,7 @@ or we can also use
 ```
 sudo apt-get install apache2
 ```
-![alt text](/images/image-8.png)
+![alt text](/images/Day_1_Images/image-8.png)
 
 -----------
 - In the below image, I have used systemctl command to change the status of the apache2 service.
@@ -106,7 +106,7 @@ sudo systemctl stop apache2
 sudo systemctl enable apache2
 sudo systemctl status apache2
 ```
-![alt text](/images/image-9.png)
+![alt text](/images/Day_1_Images/image-9.png)
 
 ------
 
@@ -115,7 +115,7 @@ sudo systemctl status apache2
 ```
 ps aux
 ```
-![alt text](/images/image-10.png)
+![alt text](/images/Day_1_Images/image-10.png)
 
 
 -----
@@ -124,7 +124,7 @@ ps aux
 ```
 top
 ```
-![alt text](/images/image-11.png)
+![alt text](/images/Day_1_Images/image-11.png)
 
 
 -----
@@ -136,7 +136,7 @@ nice -n 10 sleep 100 &
 
 & will make the command run in the back ground.
 
-![alt text](/images/image-12.png)
+![alt text](/images/Day_1_Images/image-12.png)
 
 -----
 
@@ -144,13 +144,13 @@ nice -n 10 sleep 100 &
 
 - As shown in the below image, I have created a directory named mystaticwebsite at the default path of the apache server which is /var/www/html/ .
 
-![alt text](/images/image-13.png)
+![alt text](/images/Day_1_Images/image-13.png)
 
 
 - I have created three files in it and added content inside it using vim command.
 - Not only this, I have also added a logo.png image which will appear on my webpage.
 
-![alt text](/images/image-14.png)
+![alt text](/images/Day_1_Images/image-14.png)
 
 The content of styles.css is:
 ```
@@ -198,7 +198,7 @@ sudo a2ensite mystaticwebsite.conf
 ``` 
 and then reloaded the service using systemctl command.
 
-![alt text](/images/image-15.png)
+![alt text](/images/Day_1_Images/image-15.png)
 ------
 
 - Now I got the IP address of my local system using the command:
@@ -208,5 +208,5 @@ ifconfig
 
 - When I hit that IP of my local machine in the browser, I was able to get my desired webpage as shown in below image.
 
-![alt text](/images/image-16.png)
+![alt text](/images/Day_1_Images/image-16.png)
 ---
