@@ -13,7 +13,7 @@ Server Name: WebServer01
 IP Address: 192.168.1.100
 OS: Ubuntu 20.04
 ```
-![alt text](image.png)
+![alt text](/images/image.png)
 
 I saved the file using ctrl+s command and later using ctrl+x command.
 
@@ -29,7 +29,7 @@ vim server_config.txt
 Configuration Complete: Yes
 ```
 
-![alt text](image-2.png)
+![alt text](/images/image-2.png)
 
 We have to press escape key then write wq! whre w is for save q is for quit and ! is for forceful execution.
 
@@ -42,7 +42,7 @@ wq!
 ```
 cat server_config.txt
 ```
-![alt text](image-1.png)
+![alt text](/images/image-1.png)
 -----
 
 
@@ -51,7 +51,7 @@ cat server_config.txt
 ```
 sudo adduser developer
 ```
-![alt text](image-3.png)
+![alt text](/images/image-3.png)
 
 -----
 - I have also added a group named devteam using the command groupadd.
@@ -59,7 +59,7 @@ sudo adduser developer
 ```
 sudo groupadd devteam
 ```
-![alt text](image-4.png)
+![alt text](/images/image-4.png)
 
 -----
 - In the below image, I have removed a user named developer from the group called devteam using command gpasswd -d.
@@ -67,7 +67,7 @@ sudo groupadd devteam
 ```
 sudo gpasswd -d developer devteam
 ```
-![alt text](image-5.png)
+![alt text](/images/image-5.png)
 
 ------
 - Further, I have used ls -l command to see the long listing of the file inside the present directory as it shows the permissions and ownership of the files and directories.
@@ -75,7 +75,7 @@ sudo gpasswd -d developer devteam
 ```
 ls -l server_config.txt
 ```
-![alt text](image-6.png)
+![alt text](/images/image-6.png)
 
 ------
 
@@ -84,7 +84,7 @@ ls -l server_config.txt
 ```
 chmod 644 server_config.txt
 ```
-![alt text](image-7.png)
+![alt text](/images/image-7.png)
 
 ----
 - Later, I have downloaded the apache2.service using apt install command.
@@ -97,7 +97,7 @@ or we can also use
 ```
 sudo apt-get install apache2
 ```
-![alt text](image-8.png)
+![alt text](/images/image-8.png)
 
 -----------
 - In the below image, I have used systemctl command to change the status of the apache2 service.
@@ -108,7 +108,7 @@ sudo systemctl stop apache2
 sudo systemctl enable apache2
 sudo systemctl status apache2
 ```
-![alt text](image-9.png)
+![alt text](/images/image-9.png)
 
 ------
 
@@ -117,7 +117,7 @@ sudo systemctl status apache2
 ```
 ps aux
 ```
-![alt text](image-10.png)
+![alt text](/images/image-10.png)
 
 
 -----
@@ -126,7 +126,7 @@ ps aux
 ```
 top
 ```
-![alt text](image-11.png)
+![alt text](/images/image-11.png)
 
 
 -----
@@ -138,7 +138,7 @@ nice -n 10 sleep 100 &
 
 & will make the command run in the back ground.
 
-![alt text](image-12.png)
+![alt text](/images/image-12.png)
 
 -----
 
@@ -146,13 +146,13 @@ nice -n 10 sleep 100 &
 
 - As shown in the below image, I have created a directory named mystaticwebsite at the default path of the apache server which is /var/www/html/ .
 
-![alt text](image-13.png)
+![alt text](/images/image-13.png)
 
 
 - Furthermore, I have also created three files in it and added content inside it using vim command.
 - Not only this, I have also added a logo.png image which will appear on my website.
 
-![alt text](image-14.png)
+![alt text](/images/image-14.png)
 
 The content of styles.css is:
 ```
@@ -192,12 +192,11 @@ The content of index.html is:
 -----
 - Next, I have disabled original apache2 configuration file using the command sudo a2dissite 000-default.conf and enabled the configuration file for my staticwebsite using the command sudo a2ensite mystaticwebsite.conf and then reloaded the service using systemctl command.
 
-![alt text](image-15.png)
+![alt text](/images/image-15.png)
 ------
 
 - Now I got the IP address of my local system using the command ifconfig.
 - When I hit that IP into tge browser, I was able to get my desired webpage as shown in below image.
 
-![alt text](<Screenshot from 2024-07-13 14-41-04.png>)
-
- -----
+![alt text](/images/image-16.png)
+---
