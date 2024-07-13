@@ -13,8 +13,6 @@ Server Name: WebServer01
 IP Address: 192.168.1.100
 OS: Ubuntu 20.04
 ```
-![alt text](/images/image.png)
-
 I saved the file using ctrl+s command and later using ctrl+x command.
 
 -----
