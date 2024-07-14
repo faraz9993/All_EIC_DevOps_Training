@@ -80,13 +80,15 @@ and then you have to push it using the command
 ```
 git push origin v1.0.0
 ```
-The next is git stach. Git stach is used to perform half commit.
+The next is git stash. Git stash is used to perform half commit.
 
 git stash acts as a version control tool and lets developers work on other activities or switch branches in Git without having to discard or commit changes that aren't ready.
 
 Developers can simply stash the changes in their working directory and index state and work on them later.
 
-![alt text](/images/Day_2_Images/image_9)
+![alt text](/images/Day_2_Images/image_14)
+![alt text](/images/Day_2_Images/image_15)
+
 
 Later on, I perform git cherry-picking.
 
@@ -100,7 +102,9 @@ You can switch to the correct branch and cherry-pick the commit to where it shou
 git cherry-pick <commit_id>
 ```
 
-![alt text](/images/Day_2_Images/image_10)
+![alt text](/images/Day_2_Images/image_12)
+![alt text](/images/Day_2_Images/image_13)
+
 
 Afterwards, comes git rebase. git rebase is a Git feature which is used to integrate changes from one branch into another. 
 
