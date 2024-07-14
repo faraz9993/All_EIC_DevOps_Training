@@ -7,7 +7,7 @@ For this task, I have used git version 2.25.1. You can check the git version usi
 git --version
 ```
 
-I created a git repository on Git and clonned it into my machine so I can use it using CLI.
+I created a git repository on Git and clonned it into my machine so that I can use it using Git CLI.
 
 To clone I ran the below command:
 
@@ -15,7 +15,7 @@ To clone I ran the below command:
 git clone <https:>
 ```
 
-Afterwards, I ran the git init command in the directory where I have clonned the git repo which sets up the necessary files and structures for Git to track changes in that directory.
+Afterwards, I ran the "git init" command in the directory where I have clonned the git repo which sets up the necessary files and structures for Git to track changes in that particular directory.
 
 ![alt text](/images/Day_2_Images/image_1)
 
@@ -31,7 +31,7 @@ git push
 
 ![alt text](/images/Day_2_Images/image_2)
 
-The . in git add . will add all the files in the present directory to the staging area.
+The . in "git add ." command will add all the files in the present directory to the staging area.
 
 Next, I created another branch named "feature" using the below command:
 
@@ -41,7 +41,7 @@ git branch feature
 ![alt text](/images/Day_2_Images/image_3)
 
 
-Afterwards, I changed the branch using command:
+Afterwards, I switched to the feature branch using command:
 
 ```
 git checkout feature
@@ -57,7 +57,7 @@ Later on, I checkedout to the main branch and merged the feature branch into it.
 
 ![alt text](/images/Day_2_Images/image_6)
 
-If you have done a manual changes in the git repo using GUI and you want to pull it into your git repo in the local, you can run the below command:
+If you have done a manual changes in the git repo using GUI and you want to pull it into your git repo in the local, you can do it with running the below command:
 
 ```
 git pull origin main
@@ -65,7 +65,7 @@ git pull origin feature
 ```
 ![alt text](/images/Day_2_Images/image_7)
 
-IN git tags are used to mark release points (e.g., v1.0, v2.1) in your project's development. 
+In git tags are used to mark release points (e.g., v1.0, v2.1) in your project's development. 
 
 To create a tag in the git:
 
@@ -80,11 +80,13 @@ and then you have to push it using the command
 ```
 git push origin v1.0.0
 ```
-The next is git stash. Git stash is used to perform half commit.
+The next is Git Stash. Git stash is used to perform half commit.
 
 git stash acts as a version control tool and lets developers work on other activities or switch branches in Git without having to discard or commit changes that aren't ready.
 
 Developers can simply stash the changes in their working directory and index state and work on them later.
+
+I have performed Git stash as you can see in the below image:
 
 ![alt text](/images/Day_2_Images/image_14)
 ![alt text](/images/Day_2_Images/image_15)
@@ -92,11 +94,11 @@ Developers can simply stash the changes in their working directory and index sta
 
 Later on, I perform git cherry-picking.
 
-git cherry-pick Cherry picking is the act of picking a commit from a branch and applying it to another. 
+git Cherry picking is the act of picking a commit from a branch and applying it to another. 
 
 git cherry-pick can be useful for undoing changes. For example, say a commit is accidently made to the wrong branch. 
 
-You can switch to the correct branch and cherry-pick the commit to where it should belong.
+You can switch it to the correct branch by cherry-picking the commit to where it should belong.
 
 ```
 git cherry-pick <commit_id>
