@@ -1,6 +1,6 @@
 # Day 3 Task: Docker
 
-#### In this task I had learned several basic Docker commands and also also created a frontend webpage, backend and database using Docker out of which only fronend is publically accessible and not backend and database.
+#### In this task I had learned several basic Docker commands and also also created a frontend webpage, backend and database using Docker, out of which only fronend is publically accessible and not the backend or database.
 
 First of all, I had pulled the image of nginx using below command:
 
@@ -8,7 +8,7 @@ First of all, I had pulled the image of nginx using below command:
 docker pull nginx
 ```
 
-Then later ran a container using this image where I had exposed the port 80 of the container to the port 80 of the host.
+Then, later ran a container using the pulled image where I had exposed the port 80 of the container to the port 80 of the host.
 
 ```
 docker run --name my-nginx -d -p 8080:80 nginx
@@ -16,17 +16,17 @@ docker run --name my-nginx -d -p 8080:80 nginx
 In the above command, 
 
 ```
---name my-nginx: Assigns a name to the container.
--d: Runs the container in detached mode.
--p 8080:80: Maps port 8080 on your host to port 80 in the container.
+--name = Name of the container.
+-d = Runs the container in detached mode.
+-p 8080:80 = Maps port 8080 on your host to port 80 in the container.
 ```
 
-You can check the details of all the currently running containers by the below command:
+You can check the details of all the currently running containers by running the below command:
 ```
 docker ps
 ```
 
-As the container was running, when I hit the http://localhost:8080 in my local host browser, I was able to get the nginx default webpage as shown in the below image:
+As the container was still in the running state, when I hit the http://localhost:8080 in my local host browser, I was able to get the nginx default webpage as shown in the below image:
 
 ![alt text](/images/Day_3_Images/Image_7)
 
@@ -41,7 +41,7 @@ and made the changes in the HTML page:
 echo "<html><body><h1>Hello from Docker</h1></body></html>" > /usr/share/nginx/html/index.html
 ```
 
-After making this change I was able to get this text "Hello from Docker" on my webpage as shown in the below image:
+After making this change, I was able to get this text "Hello from Docker" on my webpage as shown in the below image:
 
 ![alt text](/images/Day_3_Images/Image_9)
 
@@ -55,7 +55,7 @@ In the above command "my-nginx" is the name of the container and the "cutom-ngin
 
 Next, I created a Dockerfile to Build and Deploy a Web Application.
 
-first of all, I created a directory and inside that directory I created an index.html file with the below content inside it:
+For that, first of all, I created a directory and inside that directory I created an index.html file with the below content inside it:
 
 ```
 <!DOCTYPE html>
@@ -78,7 +78,7 @@ COPY index.html /usr/share/nginx/html/
 # Expose port 80
 EXPOSE 80
 ```
-Now, to build the docker image I ran the below given command:
+Now, to build the docker image of this Dockerfile I ran the below given command:
 
 ```
 docker build -t my-webapp-image .
@@ -111,6 +111,7 @@ docker network create fullstack-network
 ```
 docker volume create pgdata
 ```
+-----
 ### Creating a Database 
 Now, to create a databse, I created a Dockerfile
 
@@ -128,9 +129,10 @@ and ran the postgresql container using the netwok and volume I created earlier.
 ```
 docker run --name postgres-container --network fullstack-network -v pgdata:/var/lib/postgresql/data -d my-postgres-db
 ```
+-----
 ### Creating a backend
 
-As the backend code is of Node.js, I went into the backend dirctory and ran the command:
+As the backend code is written in Node.js, I went into the backend dirctory and ran the command:
 
 ```
 npm init -y
@@ -138,7 +140,7 @@ npm init -y
 
 This command will initializes a new Node.js project by creating a package.json file with default values where -y flag automatically answers "yes" to all the prompts.
 
-Then I run the below command to install Express and pg (PostgreSQL) which is a client for Node.js.
+Then, I run the below command to install Express and pg (PostgreSQL) which is a client for Node.js.
 
 ```
 npm install express pg
@@ -202,12 +204,12 @@ and ran the container of that image with the same network and volumen we created
 ```
 docker run --name backend-container --network fullstack-network -d my-node-app
 ```
-
+-----
 ### Creating a frontend
 
 The next step is to create a front-end container.
 
-Below is the code in HTML which show a weboage for the frontend:
+Below is the code in HTML which will show the webpage for the frontend:
 
 ```
 <!DOCTYPE html>
@@ -227,7 +229,7 @@ FROM nginx:latest
 COPY index.html /usr/share/nginx/html/index.html
 ```
 
-THe command for creating the image of this Dockerfile:
+The command for creating the image of this Dockerfile:
 
 ```
 docker build -t my-nginx-app .
@@ -239,7 +241,11 @@ Afterwards, I ran the container using below command of the image that is created
 docker run --name frontend-container --network fullstack-network -p 8080:80 -d my-nginx-app
 ```
 
-This is the complete project. Now next step that comes is to verify all the things.
+That's it. This step will complete the project. 
+
+-----
+Now next step that comes is to verify all the things.
+
 The first thing to verify is the connection between the Bakcend and the Database.
 
 For that we need to get into the backend container using exec command and run the below given commands:
@@ -249,7 +255,7 @@ docker exec -it backend-container /bin/bash
 apt-get update && apt-get install -y postgresql-client
 psql -h postgres-container -U user -d mydatabase -c "SELECT NOW();"
 ```
-If the connection between backend and postgresql would be successful it will show you the details of the database as shown in the below image:
+If the connection between backend and postgresql is successful it will show you the details of the database as shown in the below image:
 
 ![alt text](images/Day_3_Images/Image_22)
 
@@ -257,5 +263,5 @@ Then when we will hit the "http://localhost:8080" in the browser of the localhos
 
 ![alt text](images/Day_3_Images/Image_24)
 
-The link given on the webpage is for connecting with the backend so, when you will click on it it should not take you to the backend which is a basic requirement as the backend of the server should not be publicly accessible. 
+The link given on the webpage is for connecting with the backend so, when you will click on it, it should not take you to the backend which is a basic requirement as the backend of the server should not be publicly accessible. 
 
