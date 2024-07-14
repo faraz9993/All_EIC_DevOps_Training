@@ -7,9 +7,9 @@ For this task, I needed two nodes. One of the nodes will be manager node and ano
 
 For that, I created two ubuntu server using AWS EC2 instance. 
 
-In security group I  allowed ALL TCP traffic so both the nodes can easily connect with each other using token.
+In security group, I  allowed ALL TCP traffic so both the nodes can easily connect with each other using the token.
 
-In bothe the nodes I install docker swarm using below commands:
+In both the nodes, I installed docker swarm using below commands:
 
 ```
 apt-get update && apt-get install docker.io -y
@@ -26,7 +26,6 @@ When I ran the above command, the token was generated. Using that token we can c
 ```
 docker swarm join --token <WORKER-TOKEN> <MANAGER-IP>:2377
 ```
-
 
 ![alt text](images/Day_4_Images/Image_2)
 
