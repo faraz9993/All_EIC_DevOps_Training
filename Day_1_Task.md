@@ -1,5 +1,5 @@
 # Day 1 Task
-- In this task, I have performed several basic linux commands.
+- In this task, I have performed several basic linux commands and created a static website using html on apache webserver.
 
 - First of all, I have created a file named server_config.txt using nano command and added a context inside it.
 
