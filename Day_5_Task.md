@@ -1,4 +1,4 @@
-# Day 3 Task: Kubernetes and Docker-Compose
+# Day 5 Task: Kubernetes and Docker-Compose
 
 In this task, I have deployed a full-stack application using kubernetes and Docker compose.
 I have used KIND cluster for this task.
