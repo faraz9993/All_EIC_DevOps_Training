@@ -1,6 +1,6 @@
 # Day 6 Task: Node.js and Python code deployment using Kubernetes-Minikube 
 
-### In this project I have performed two tasks:
+### In this project, I have performed two tasks:
 1. Deploying a Node.js App Using Minikube Kubernetes
 2. Deploying a Python Flask App Using Minikube Kubernetes
 
@@ -12,7 +12,7 @@ First of all, I made a directory and initialized a Node.js project using below c
 npm init -y
 ```
 
-This command will create a new package.json file in your Node.js project with default values. 
+This command will create a new package.json file in your Node.js project directory with default values. 
 
 Then, I ran the below command
 
@@ -68,7 +68,7 @@ When I ran the container out of this docker image, I was able to get my webpage 
 
 ![alt text](images/Day_6_Images/Image_2)
 
-These are my kubernetes menifest files which I used for the deployment:
+Now, these are my kubernetes menifest files which I used for the deployment:
 
 deployment.yaml:
 
@@ -131,8 +131,8 @@ spec:
 Afterwards, I deployed all three files using below commands:
 
 ```
-kuectl apply -f deployment.yaml
-kuectl apply -f service.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
 kubectl apply -f service-nodeport.yaml
 ```
 
