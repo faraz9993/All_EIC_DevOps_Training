@@ -1,17 +1,17 @@
 # Day 7 Task: Node.js code deployment using minikube-kubernetes with ConfigMaps, Secrets, environment variables and horizontal pod autoscaling
 
-### In this task I have developed a simple Node.js application, deploy it on a local Kubernetes cluster using Minikube, and configure various Kubernetes features.
+### In this task, I have developed a simple Node.js application, deployed it on a local Kubernetes cluster using Minikube and configure various Kubernetes features.
 
-First of all, I created a directory named "nodejs-k8s-project" where I have to performed all the task.
+First of all, I created a directory named "nodejs-k8s-project" where I performed all the task.
 
-First of all I ran the command
+First of all, I ran the below command:
 
 ```
 npm init -y
 ```
 This command will create a new package.json file in your Node.js project directory with default values. 
 
-Then, I ran the below command
+Then, I ran the below command:
 
 ```
 npm install express body-parser
@@ -79,6 +79,7 @@ docker build -t fansari9993/test9:tagname
 ```
 
 Now, below are my Kubernetes deployment files.
+
 deployment.yaml:
 
 ```
@@ -188,6 +189,6 @@ minikube service nodejs-app-service --url
 ```
 ![alt text](images/Day_7_Images/Image_9)
 
-In the below image, we can see the desired webpage deployed using above operation:
+In the below image, we can see the desired webpage deployed using the above operation:
 
 ![alt text](images/Day_7_Images/Image_10)
