@@ -83,7 +83,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -99,6 +99,11 @@ spec:
           - "-text=Hello from backend"
         ports:
         - containerPort: 5678
+        resources:
+          requests:
+            cpu: "500m"
+          limits:
+            cpu: "1"
 ---
 apiVersion: v1
 kind: Service
@@ -267,4 +272,19 @@ give the necessary execution permission to the file and run it.
 
 As soon as, the traffic will start hitting the webpage, CPU utilization will increase and as soon as it will go beyond 6% the new pod will be created.
 
+![alt text](images/Day_9_Images/Image_4)
+
+![alt text](images/Day_9_Images/Image_5)
+
+To fulfill this requirement, you must write resources in the deployment file.
+
+```
+ports:
+- containerPort: 5678
+resources:
+  requests:
+    cpu: "500m"
+  limits:
+    cpu: "1"
+```
 -------
