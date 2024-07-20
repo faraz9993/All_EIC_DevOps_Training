@@ -1,8 +1,8 @@
 # Day 9 Task
-### - In this task I have deployed a front-end webpage, backend, ingress file, generated a self-signed certificate, sticky sessions and horizontal pod auto-scalling
+### - In this task, I have deployed a front-end webpage, backend, ingress file, generated a self-signed certificate, sticky sessions and horizontal pod auto-scalling using Kubernetes.
 
 
-First of all, I wrote the code for my webpage in HTML.
+First of all, I wrote the code for front-end webpage in HTML.
 Below is my sample code:
 
 ```
@@ -16,7 +16,7 @@ Below is my sample code:
 </body>
 </html>
 ```
-Then, I created the Dockerfile for this code:
+Then, I created a Dockerfile for this code:
 
 ```
 FROM nginx:1.10.1-alpine
@@ -30,7 +30,7 @@ I created an image out of this Dockerfile and pushed it to my public repository:
 docker build -t fansari9993/test9:v9 .
 docker push fansari9993/test9:v9 
 ```
-After that I created my deployment fies. They are as below.
+After that, I created my deployment fies. They are as below.
 
 frontend.yaml file:
 
@@ -165,7 +165,7 @@ kubectl apply -f backend.yaml
 kubectl apply -f ingress.yaml
 ```
 
-Next, I resolve the DNS of minikube ip with my webpage url. I made an enrry of it in /etc/hosts.
+Next, I resolve the DNS of minikube ip with my webpage url. I made an entry of it in /etc/hosts . 
 
 ```
 192.168.49.2    myapp.local
@@ -188,7 +188,7 @@ Then I created the tls certificate and the tls key using below command:
 kubectl create secret tls my-tls-secret --cert=tls.crt --key=tls.key
 ```
 
-As soon as you will run this command two new files will be created in your account.
+As soon as you will run this command two new files will be created in your directory.
 
 One with the name of tls.crt & another with the name of tls.key.
 
@@ -231,6 +231,8 @@ As soon as you will apply this file, You will be able to get the below output:
 
 ![alt text](images/Day_9_Images/Image_3)
 
+You need to do the same for the backend as well.
+
 One more thing needed here is the sticky session. We need to have the sticky session to keep a session active for a set amount of time.
 
 In Kubernetes cluster, this means that all traffic from a particular client to an application is redirected to the same pod, even if the number of replicas is scaled up.
@@ -254,9 +256,9 @@ This will keep the session active for 1800 seconds which is 30 mnts.
 
 Now, the next step is testing.
 
-You have to bring the traffic on your website so that if the CPU utilization goes beyond 6% the new pod is created or not.
+You have to bring the traffic on your website in order to check that if the CPU utilization goes beyond 6% the new pod is created or not.
 
-For that I haved used the below script:
+For that I have used the below given shell script:
 
 ```
 #!/bin/bash
@@ -267,8 +269,9 @@ CONCURRENCY=10
 echo "Sending traffic to $URL using ApacheBench"
 siege -c$CONCURRENT_USERS -r$REQUESTS $URL
 ```
+You will have to change the url as per the testing you are doing, either frontend or the backend.
 
-give the necessary execution permission to the file and run it.
+Don't misss to give the necessary execution permission to the file and then run it.
 
 As soon as, the traffic will start hitting the webpage, CPU utilization will increase and as soon as it will go beyond 6% the new pod will be created.
 
@@ -280,11 +283,12 @@ To fulfill this requirement, you must write resources in the deployment file.
 
 ```
 ports:
-- containerPort: 5678
+- containerPort: 5678 (As per the requirement.)
 resources:
   requests:
     cpu: "500m"
   limits:
     cpu: "1"
 ```
+
 -------
