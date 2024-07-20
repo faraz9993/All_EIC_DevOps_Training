@@ -40,7 +40,7 @@ kind: Deployment
 metadata:
   name: nginx-static-site
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx-static-site
@@ -182,7 +182,7 @@ After applying these three files, you must be able to get the webpage using the 
 
 ![alt text](images/Day_9_Images/Image_2)
 
-Then I created the tls certificate and the tls key using below command:
+Then, I created the tls certificate and the tls key using below command:
 
 ```
 kubectl create secret tls my-tls-secret --cert=tls.crt --key=tls.key
@@ -241,11 +241,8 @@ For that you need to add a few lines in the annotation:
 
 ```
 nginx.ingress.kubernetes.io/affinity: "cookie"
-
 nginx.ingress.kubernetes.io/session-cookie-name: "route"
-
 nginx.ingress.kubernetes.io/rewrite-target: /
-
 nginx.ingress.kubernetes.io/session-cookie-max-age: “1800”
 ```
 
@@ -273,7 +270,13 @@ You will have to change the url as per the testing you are doing, either fronten
 
 Don't misss to give the necessary execution permission to the file and then run it.
 
-As soon as, the traffic will start hitting the webpage, CPU utilization will increase and as soon as it will go beyond 6% the new pod will be created.
+At first, the cpu utilization will be 0% as shown in below image:
+
+![alt text](images/Day_9_Images/Image_6)
+
+
+However, as soon as, the traffic will start hitting the webpage, CPU utilization will increase and as soon as it will go beyond 6% the new pod will be created.
+
 
 ![alt text](images/Day_9_Images/Image_4)
 
