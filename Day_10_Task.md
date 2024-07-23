@@ -44,7 +44,7 @@ crontab -e
 ### After running this command, a file will be opened where you have to insert the below content:
 
 ```
-*/5     *       *       *       *       sh /home/einfochips/"All Extras"/EIC_DevOps_Training/Shell_Task/shell.sh
+*/5     *       *       *       *       sh /home/shell.sh
 ```
 
 
