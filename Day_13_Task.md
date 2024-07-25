@@ -1,6 +1,6 @@
 # Day 13: Multi-Branch Pipeline for a Simple Java Maven Project
 
-### First of all, I created a git repo named my-java-app. In that repo I cretaed below file structure:
+### First of all, I created a git repo named my-java-app. In that repo, I created below file structure:
 
 ```
 my-java-app/
@@ -13,7 +13,7 @@ my-java-app/
                     └── App.java
 ```
 
-The content inside my pom.xml file is:
+### The content inside my pom.xml file is:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -47,7 +47,7 @@ public class App {
 
 ### As I created two more branches, all the files available in the master branch wento to other branches as well.
 
-### The content of App.java in feature-branch-1 is:
+### I modified the content of App.java in feature-branch-1 as:
 
 ```
 package com.example;
@@ -59,7 +59,7 @@ public class App {
 }
 ```
 
-### And the content of App.java in feature-branch-2 is:
+### I modified the content of App.java in feature-branch-2 as:
 
 ```
 package com.example;
@@ -71,7 +71,7 @@ public class App {
 }
 ```
 
-Now, I created a Jenkinsfile in master branch:
+### Then, I created a Jenkinsfile in master branch:
 
 ```
 pipeline {
@@ -130,7 +130,7 @@ pipeline {
 }
 ```
 
-The Jenkinsfile of feature-branch-1 is:
+### The Jenkinsfile of feature-branch-1 is:
 ```
 pipeline {
     agent any
@@ -188,7 +188,7 @@ pipeline {
 }
 ```
 
-The Jenkinsfile of feature-branch-2 is:
+### The Jenkinsfile of feature-branch-2 is:
 
 ```
 pipeline {
@@ -261,9 +261,9 @@ pipeline {
 ### For master branch:
 ![alt text](images/Day_13_Images/Image_3)
 
-### For feature-branch-1 branch:
+### For feature-branch-1:
 ![alt text](images/Day_13_Images/Image_4)
 
-### For feature-branch-2 branch:
+### For feature-branch-2:
 ![alt text](images/Day_13_Images/Image_5)
 
