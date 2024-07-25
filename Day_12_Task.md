@@ -20,7 +20,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from GitHub repository
-                git url: 'https://github.com/faraz9993/Private_Repo.git', branch: 'main'
+                git url: 'https://github.com/faraz9993/Private_Repo.git', branch: 'main', credentialsId: 'ca1559d6-3890-4fcb-9ead-11716016209a'
             }
         }
 
