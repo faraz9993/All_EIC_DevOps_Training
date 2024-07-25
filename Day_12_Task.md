@@ -1,12 +1,12 @@
 # Task:12 Jenkins Pipeline 2
 
-### First of all, I created the private Git repo in which I pushed the code provided by the instructor. Then I created a pipeline repo in Jenkins.
+### First of all, I created a private git repo in which I pushed the code provided by the instructor. Then I created a pipeline project in Jenkins.
 
-### I configured the Git private repo in Jenkins as below. In this I kept branch specifier as main and Script path as Jenkinsfile.
+### I configured the Git private repo in Jenkins as below in which I kept branch specifier as main and Script path as Jenkinsfile.
 
 ![alt text](images/Day_12_Images/Image_3)
 
-### Below is my Jenkinsfile which is present in the private gitrepo:
+### Below is my Jenkinsfile which is used in my private git repo:
 
 ```
 pipeline {
@@ -60,11 +60,11 @@ pipeline {
 }
 ```
 
-### When I build the pipeline it was successfully build and gave the stage output as whown in below image.
+### When I build the pipeline it was successfully build and gave the stage output as shown in the below image.
 
 ![alt text](images/Day_12_Images/Image_2)
 
-### All the artifacts were appearing in the container as showing in the below image:
+### Not only this, but all the artifacts were also appearing in the container as shown in the below image:
 
 
 ![alt text](images/Day_12_Images/Image_4)
