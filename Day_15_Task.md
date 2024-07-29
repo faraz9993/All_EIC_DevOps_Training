@@ -1,4 +1,4 @@
-### Day:15 In this task, I have used Github, docker, Jenkins CI/CD and ansible to deploy a docker container on the target machine.
+### Day:15 In this task, I have used Github, Docker, Jenkins CI/CD and ansible to deploy a docker container on the target machine.
 
 ### First of all, I created a simple application in Java as App.java which is given below:
 
@@ -17,7 +17,7 @@ javac App.java
 java App.java
 ```
 
-### Secondly, I created a Dockerfile which which will create an image for this app.
+### Secondly, I created a Dockerfile which will create an image for this app.
 
 ```
 FROM openjdk:11-slim
@@ -85,7 +85,7 @@ pipeline {
 
 ![alt text](images/Day_14_Images/Image_3)
 
-### Later on, I created made a virtual machine and got its IP which is 192.168.232.211. I used a that IP and created an inventory file and ping it.
+### Later on, I created a virtual machine and got its IP which is 192.168.232.211. I used a that IP and created an inventory file and ping it.
 
 ```
 [webservers]
@@ -153,7 +153,7 @@ ansible-playbook -i inventory.cfg main.yaml
 ```
 ![alt text](images/Day_15_Images/Image_2)
 
-### I was able to see my container running on the target machine as it can be seen in the below image:
+### I was able to see my docker container running on the target machine as it can be seen in the below image:
 
 ![alt text](images/Day_15_Images/Image_3)
 
