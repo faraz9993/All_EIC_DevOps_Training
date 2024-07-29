@@ -1,4 +1,4 @@
-### Day:15 In this task, I have used Github, Docker, Jenkins CI/CD and ansible to deploy a docker container on the target machine.
+### Day 15: In this task, I have used Github, Docker, Jenkins CI/CD and ansible to deploy a docker container on the target machine.
 
 ### First of all, I created a simple application in Java as App.java which is given below:
 
