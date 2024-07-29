@@ -1,6 +1,6 @@
 ### Day 14: In this task, I have done a set up of a CI/CD pipeline using Jenkins to streamline the deployment process of a simple Java application. 
 
-First of all, I created a simple application in Java as App.Java which is given below:
+### First of all, I created a simple application in Java as App.java which is given below:
 
 ```
 package com.example;
@@ -10,6 +10,11 @@ public class App {
         System.out.println("Hello World!");
     }
 }
+```
+### I tried running this app in local first using below commands, which was running succesffully.
+```
+javac App.java
+java App.java
 ```
 
 ### Secondly, I created a Dockerfile which which will create an image for this app.
