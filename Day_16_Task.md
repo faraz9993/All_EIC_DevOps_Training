@@ -38,6 +38,7 @@ ansible all -i inventory.cfg -b -m service -a "name=nginx state=restarted"
 ```
 ansible all -i inventory.cfg -b -m apt -a "update_cache=yes"
 ```
+![alt text](images/Day_16_Images/Image_3)
 
 ### Static Inventory is typically a file where the hosts are listed along with the groups tehy belong to.
 ```
