@@ -40,7 +40,7 @@ ansible all -i inventory.cfg -b -m apt -a "update_cache=yes"
 ```
 ![alt text](images/Day_16_Images/Image_3)
 
-### Static Inventory is typically a file where the hosts are listed along with the groups tehy belong to.
+### Static Inventory is typically a file where the hosts are listed along with the groups they belong to.
 ```
 [development]
 dev1.example.com
@@ -52,7 +52,7 @@ stage2.example.com
 ```
 ### Dynamic inventory is a script or a plugin that fetches the inventory from external sources like cloud providers, databases or other services.
 
-### Next, I created a playbook that will install a nginx webserver on my target machine. Not only this, I also created a file, modified its content and deleted it. Below is that main.yaml file:
+### Next, I created a playbook that will install a nginx webserver on my target machine. Not only this, I also created a file, modified the content inside it and deleted it. Below is that main.yaml file:
 
 ```
   - name: Project 4 tasks
@@ -88,8 +88,8 @@ ansible-playbook main.yaml -i inventory.cfg
 
 ![alt text](images/Day_16_Images/Image_8)
 
-### Furthermore, I implemented an error handling strategies using modules like block and rescue.
-### I used two links that will give me a list of all the engineering colleges in Ahmedabad city. In case, if the first link fails, it will download the second link which to rescue the deployment failure. 
+### Furthermore, I implemented an error handling strategies using modules like Block and Rescue.
+### I used two links that will give me a list of all the engineering colleges in Ahmedabad city. In case, if the first link fails, it will download the second link which is to rescue the deployment failure. 
 
 ```
 - name: download college_list
