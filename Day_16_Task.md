@@ -1,6 +1,6 @@
 # Day 16: In this task, I have created an instance on AWS and used it as a target machine to perform several Ansible tasks.
 
-### Below is my inventory file which I used to ping myh target machine.
+### Below is my inventory file which I used to ping my target machine.
 
 ### inventory.cfg
 ```
@@ -20,7 +20,7 @@ ansible all -i inventory.cfg -m ping
 ```
 ![alt text](images/Day_16_Images/Image_1)
 
-### Once, I was successfully able to ping my machine, I ran a few ad-hoc commands such as:
+### Once, I was successfully able to ping my machine, I ran a few ad-hoc commands on it such as:
 
 ### 1. Disk usage:
 ```
@@ -33,6 +33,8 @@ ansible all -i inventory.cfg -a "du -h"
 ansible all -i inventory.cfg -b -m service -a "name=nginx state=restarted"
 ```
 ![alt text](images/Day_16_Images/Image_11)
+
+Here, -b is for providing sudo privileges.
 
 ### 3. Updating the packages:
 ```
@@ -52,7 +54,7 @@ stage2.example.com
 ```
 ### Dynamic inventory is a script or a plugin that fetches the inventory from external sources like cloud providers, databases or other services.
 
-### Next, I created a playbook that will install a nginx webserver on my target machine. Not only this, I also created a file, modified the content inside it and deleted it. Below is that main.yaml file:
+### Next, I created a playbook that will install a nginx webserver on my target machine. Not only this, I also created a text file, modified the content inside it and deleted it. Below is that main.yaml file:
 
 ```
   - name: Project 4 tasks
@@ -88,7 +90,7 @@ ansible-playbook main.yaml -i inventory.cfg
 
 ![alt text](images/Day_16_Images/Image_8)
 
-### Furthermore, I implemented an error handling strategies using modules like Block and Rescue.
+### Furthermore, I implemented an error handling strategiy using modules like Block and Rescue.
 ### I used two links that will give me a list of all the engineering colleges in Ahmedabad city. In case, if the first link fails, it will download the second link which is to rescue the deployment failure. 
 
 ```
