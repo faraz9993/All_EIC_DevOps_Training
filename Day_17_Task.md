@@ -1,5 +1,5 @@
 # Day 17 Project 1: 
-### In this task, I have automated the deployment and configuration of a PostgreSQL database server on an Ubuntu EC2 instance which is hosted on AWS, and set up regular backups of database using cron job scheduling.
+### In this task, I have automated the deployment and configuration of a MySQL database server on an Ubuntu EC2 instance which is hosted on AWS, and set up regular backups of database using cron job scheduling.
 
 ### I have automated the entire process using Ansible.
 
@@ -13,7 +13,7 @@ web ansible_host=3.135.203.28 ansible_user=ubuntu ansible_ssh_private_key_file=/
 
 ![alt text](images/Day_17_Images/Image_1)
 
-### Next, I built a YAML file named main.yaml which will automates the installation of PostgreSQL, sets up the database, creates a user and configures a cron job for backups.
+### Next, I built a YAML file named main.yaml which will automates the installation of MySQL, sets up the database, creates a user and configures a cron job for backups.
 
 ```
 - name: Performing Day_17_Project_1
@@ -44,7 +44,11 @@ web ansible_host=3.135.203.28 ansible_user=ubuntu ansible_ssh_private_key_file=/
         host: '%'
         state: present
 
+
 # mysql -u fansari -p
+# priv: '*.*:ALL' means user fansari will have all privileges (ALL) on all databases (*) and all tables (*).
+# host: '%' means This specifies from which hosts the user can connect. The wildcard character % means the user can connect from any host.
+
 
     - name: changing mysql configuration file using template
       template:
@@ -134,7 +138,7 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
 
 ![alt text](images/Day_17_Images/Image_3)
 
-### Next, I built a YAML file named main2.yaml which will automates the installation of PostgreSQL, sets up the database, creates a user and configures a cron job for backups.
+### Next, I built a YAML file named main2.yaml which will automates the installation of mysql, sets up the database, creates a user and configures a cron job for backups.
 
 ```
 - name: Performing Day_17_Project_2
@@ -175,6 +179,9 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
         priv: '*.*:ALL'
         host: '%'
         state: present
+
+# priv: '*.*:ALL' means user fansari will have all privileges (ALL) on all databases (*) and all tables (*).
+# host: '%' means This specifies from which hosts the user can connect. The wildcard character % means the user can connect from any host.
 
     - name: changing the nginx config file using template
       template:
@@ -254,7 +261,7 @@ file_name: 'index.html'
 http_port: 80 
 ```
 
-### Al the tasks were successfully executed on the target machine as can be seen in the below image.
+### All the tasks were successfully executed on the target machine as can be seen in the below image.
 
 ![alt text](images/Day_17_Images/Image_11)
 
