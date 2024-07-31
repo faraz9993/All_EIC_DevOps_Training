@@ -1,6 +1,7 @@
-### Day 17 Project 1: In this task, I have automated the deployment and configuration of a PostgreSQL database server on an Ubuntu EC2 instance which is hosted on AWS, and set up regular backups using cron job scheduling.
+# Day 17 Project 1: 
+### In this task, I have automated the deployment and configuration of a PostgreSQL database server on an Ubuntu EC2 instance which is hosted on AWS, and set up regular backups of database using cron job scheduling.
 
-### I have performed this entire task using Ansible.
+### I have automated the entire process using Ansible.
 
 ### First of all, I created an inventory file that will be used to connect with my target machine. My inventory file is in INI format.
 ```
@@ -70,9 +71,9 @@ web ansible_host=3.135.203.28 ansible_user=ubuntu ansible_ssh_private_key_file=/
         name: mysql
         state: restarted
 ```
-### In the playbook, I had also included handlers which will retart my MySQL database service whenever a change will be made in its configuration file.
+### In the playbook, I had also included handlers which will restart my MySQL database service whenever a change will be made in its configuration file.
 
-### For taking a back-up at a regular interval of every 30 minutes, I have set a cron job as well. The back-up will be taken using a below script.
+### For taking a back-up at a regular interval of every 30 minutes, I have set a cron job. The back-up will be taken using a below script.
 
 ```
 #!/bin/bash
@@ -119,7 +120,8 @@ ansible-playbook main.yaml -i inventory
 
 ![alt text](images/Day_17_Images/Image_7)
 
-### Day 17 Project 2: In this task, I have automated the setup of a multi-tier web application stack with database and application servers using Ansible.
+# Day 17 Project 2:
+### In this task, I have automated the setup of a multi-tier web application stack with database and application servers using Ansible.
 ### I have used, MySQL database and an nginx webserver.
 
 ### First of all, I created an inventory file that will be used to connect with my target machine. My inventory file is in INI format.
@@ -188,11 +190,6 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
         mode: '777'
       
   handlers:
-    - name: restart mysql
-      service:
-        name: mysql
-        state: restarted
-
     - name: restart nginx
       service:
         name: nginx
@@ -257,3 +254,14 @@ file_name: 'index.html'
 http_port: 80 
 ```
 
+### Al the tasks were successfully executed on the target machine as can be seen in the below image.
+
+![alt text](images/Day_17_Images/Image_11)
+
+### Below, is the image which proves that nginx.conf file was copied exactly as needed on the target machine. 
+
+![alt text](images/Day_17_Images/Image_10)
+
+### Below is my frontend application which is taking the input form the user for its name and e-mail id:
+
+![alt text](images/Day_17_Images/Image_8)
