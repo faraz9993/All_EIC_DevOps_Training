@@ -206,52 +206,45 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
 ```
 ### Below is my index.html file which I copied to the target machine:
 ```
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Input Form</title>
+    <title>Simple MySQL Connection</title>
 </head>
 <body>
-    <h2>User Information</h2>
-    <form action="/submit" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <button type="submit">Submit</button>
+    <h1>This is my nginx webpage</h1>
+    <form action="process.php" method="POST">
+        <input type="submit" value="Check Database Connection">
     </form>
 </body>
 </html>
+
 
 ```
 ### Below is my nginx configuration file which I created using a template which is taking a variable from the /var/main.yaml file:
 
 ```
-worker_processes 1;
+server {
+    listen {{ http_port }};
+    server_name {{ ip_address }};
 
-events {
-    worker_connections 1024;
-}
+    root /var/www/html;
+    index index.php index.html index.htm;
 
-http {
-    include       mime.types;
-    default_type  application/octet-stream;
+    location / {
+        try_files $uri $uri/ =404;
+    }
 
-    sendfile        on;
-    keepalive_timeout  65;
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+    }
 
-    server {
-        listen       {{ http_port }};
-        server_name  localhost;
-
-        location / {
-            root   /var/www/html;
-            index  {{ file_name }};
-        }
+    location ~ /\.ht {
+        deny all;
     }
 }
+
 ```
 
 ### /var/main.yaml:
@@ -259,16 +252,44 @@ http {
 ```
 file_name: 'index.html'
 http_port: 80 
+ip_address: 3.129.67.224
+database_host: 'localhost'
+database_user: 'fansari'
+database_password: 'fansari1234'
+database_name: 'mysql'
+```
+### Below is my process.php file which gives an output that web server is successfully connected with the database.
+
+```
+<?php
+$servername = "localhost";
+$username = "fansari";
+$password = "fansari1234";
+$dbname = "mysql";
+
+// Create connection
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connection with the database is successfull";
+?>
+
 ```
 
 ### All the tasks were successfully executed on the target machine as can be seen in the below image.
 
+
 ![alt text](images/Day_17_Images/Image_11)
 
-### Below, is the image which proves that nginx.conf file was copied exactly as needed on the target machine. 
-
-![alt text](images/Day_17_Images/Image_10)
-
-### Below is my frontend application which is taking the input form the user for its name and e-mail id:
+### Below is my frontend application:
 
 ![alt text](images/Day_17_Images/Image_8)
+
+### Below page shows my successful connection with the database as per my process.php file.
+
+![alt text](images/Day_17_Images/Image_10)
