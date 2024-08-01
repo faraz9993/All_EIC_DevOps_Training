@@ -145,6 +145,8 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
   hosts: webservers
   gather_facts: no
   become: yes
+  vars_files:
+    - vars/main.yaml
   tasks:
     - name: update cache as apt-get update
       apt:
@@ -157,7 +159,7 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
 
     - name: install nginx
       apt:
-        name: nginx
+        name: ['nginx', 'php-mysql']
         state: present
 
     - name: enable the mysql service
@@ -183,12 +185,25 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
 # priv: '*.*:ALL' means user fansari will have all privileges (ALL) on all databases (*) and all tables (*).
 # host: '%' means This specifies from which hosts the user can connect. The wildcard character % means the user can connect from any host.
 
-    - name: changing the nginx config file using template
+    - name: copying index.html
       template:
         src: "/home/einfochips/All\ Extras/EIC_DevOps_Training/Ansible_Task/Day_17/index.html"
         dest: "/var/www/html/index.html"
       notify:
         - restart nginx
+
+    - name: copying nginx.conf.j2
+      template:
+        src: "/home/einfochips/All\ Extras/EIC_DevOps_Training/Ansible_Task/Day_17/templates/nginx.conf.j2"
+        dest: "/etc/nginx/sites-available/default"
+      notify:
+        - restart nginx
+    
+    - name: copy the PHP script
+      ansible.builtin.copy:
+        src: "/home/einfochips/All\ Extras/EIC_DevOps_Training/Ansible_Task/Day_17/process.php"
+        dest: "/var/www/html/process.php"
+        mode: '0644'
 
     - name: copy the script
       ansible.builtin.copy:
@@ -202,7 +217,7 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
         name: nginx
         state: restarted
 
-#mysql -u fansari -p
+# mysql -u fansari -p
 ```
 ### Below is my index.html file which I copied to the target machine:
 ```
