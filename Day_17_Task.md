@@ -138,7 +138,7 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
 
 ![alt text](images/Day_17_Images/Image_3)
 
-### Next, I built a YAML file named main2.yaml which will automates the installation of mysql, sets up the database, creates a user and configures a cron job for backups.
+### Next, I built a YAML file named main2.yaml which will automate the installation of mysql, sets up the database, creates a user and configures a cron job for backups.
 
 ```
 - name: Performing Day_17_Project_2
@@ -215,6 +215,11 @@ web ansible_host=35.178.183.12 ansible_user=ubuntu ansible_ssh_private_key_file=
     - name: restart nginx
       service:
         name: nginx
+        state: restarted
+    
+    - name: restart mysql
+      service:
+        name: mysql
         state: restarted
 
 # mysql -u fansari -p
@@ -305,6 +310,6 @@ echo "Connection with the database is successfull";
 
 ![alt text](images/Day_17_Images/Image_8)
 
-### Below page shows my successful connection with the database as per my process.php file.
+### Below image shows my successful connection with the database as per my process.php file.
 
 ![alt text](images/Day_17_Images/Image_10)
