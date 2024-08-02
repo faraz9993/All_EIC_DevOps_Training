@@ -1,5 +1,5 @@
 # Assesment_Day:
-### In this task, I have done a set up of microservices-based application. The application will be containerized using Docker and orchestrated using Kubernetes.
+### In this task, I have done a set up of microservices-based application for an e-commerce website. The application will be containerized using Docker and orchestrated using Kubernetes.
 
 ### First of all, I created 3 services one for application frontend, one for Order Processing and one for Product Catalogue. All the services were created and interconnected using HTML.
 
@@ -102,7 +102,7 @@
 </html>
 ```
 
-### ### Below is my index.html file for the Product Catalogue :
+### Below is my index.html file for the Product Catalogue :
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -161,7 +161,7 @@
 </html>
 ```
 
-#### I created the Dockerfile for all three services:
+### Next, I created the Dockerfile for all three services:
 ### I used the same Dockerfile for the Frontend, Order Processing and Product Catalogue :
 
 ```
@@ -170,8 +170,8 @@ COPY index.html /usr/share/nginx/html/index.html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
-### After that I created a docker images out of these files and pushed them to the docker hub.
-### Below are the commands I used for building the docker images, creating the tag and pushing them to the docker hub.
+### After that I created docker images out of these files and pushed them to the docker hub.
+### Below are the commands I used for building the docker images, creating the tag and pushing them to the docker hub.  
 
 ```
 docker build -t front-end .
@@ -191,7 +191,7 @@ docker push fansari9993/test9:order-processing
 
 ![alt text](images/Assessment_Day/Image_12)
 
-### After pushing the images to the docker hub I created kubernetes manifest files for each microservice.
+### After pushing the images to the docker hub, I created kubernetes manifest files for each microservice.
 
 ### Below is my frontend.yaml file for frontend deployment and service:
 
@@ -333,7 +333,7 @@ spec:
 ### This is a Order Processing webpage:
 ![alt text](images/Assessment_Day/Image_5)
 
-### After successful I deployment of the images, I pushed the code to the development branch and merged them to the testing and then later to the production branch.
+### After the successful deployment of all the micro-services, I pushed the code to the development branch and merged them to the testing and then later to the production branch.
 
 ![alt text](images/Assessment_Day/Image_3)
 
