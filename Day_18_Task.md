@@ -1,6 +1,6 @@
-### In this task I have deployed a three-tier web application (frontend, backend, and database) using Ansible roles. The frontend is an Nginx web server, the backend is a Node.js application and the database is a MySQL server. I have used Ansible Galaxy roles where applicable and defined appropriate role dependencies. The deployment has automated to ensure that all components are configured correctly and can communicate with each other.
+### In this task, I have deployed a three-tier web application (frontend, backend and database) using Ansible roles. The frontend is an Nginx web server, the backend is a Node.js application and the database is a MySQL server. I have used Ansible Galaxy roles where applicable and defined appropriate role dependencies. The deployment has been automated to ensure that all components are configured correctly and can communicate with each other.
 
-### FIrst od all, I created an inventory file:
+### FIrst of all, I created an inventory file:
 
 ```
 [webservers]
@@ -15,7 +15,7 @@ ansible-galaxy init backend
 ansible-galaxy init database
 ```
 
-### Below, is directory structure after creating the roles:
+### Below, is the directory structure after creating the roles:
 
 ```
 .
@@ -132,7 +132,7 @@ http_port: 80
 server_name: nginx_server
 ```
 
-### below is my backend.tasks/main.yaml file:
+### below is my backend/tasks/main.yaml file:
 ```
 ---
 - block:
