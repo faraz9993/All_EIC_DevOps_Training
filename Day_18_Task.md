@@ -83,6 +83,22 @@ ansible-galaxy init database
 
 28 directories, 33 files
 ```
+### Below is my main_ansible_playbook.yaml file:
+
+```
+---
+- name: Deploy three-tier web application
+  hosts: all
+  become: yes
+  vars:
+    nodejs_version: "14.x"
+
+  roles:
+    - role: frontend
+    - role: backend
+    - role: database
+
+```
 
 ### Below is my frontend/tasks/main.yaml file:
 ```
