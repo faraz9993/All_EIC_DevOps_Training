@@ -1,13 +1,13 @@
 # Day 19:
 ### In this task, I have 
-### Set up an AWS EC2 instance as a worker node.
-### Implement Ansible playbooks and roles following best practices.
-### Use version control to manage Ansible codebase.
-### Document Ansible roles and playbooks.
-### Break down deployment tasks into reusable roles.
-### Write reusable and maintainable Ansible code.
-### Use dynamic inventory scripts to manage AWS EC2 instances.
-### Deploy a web application on the EC2 instance.
+### > Set up an AWS EC2 instance as a worker node.
+### > Implemented Ansible playbooks and roles following best practices.
+### > Used version control to manage Ansible codebase.
+### > Documented Ansible roles and playbooks.
+### > Broke-down deployment tasks into reusable roles.
+### > Wrote reusable and maintainable Ansible code.
+### > Used dynamic inventory scripts to manage AWS EC2 instances.
+### > Deployed a web application on the EC2 instance.
 
 ### So, first of all, I created a role for nginx installation on the target machines using below command:
 ```
@@ -15,6 +15,7 @@ ansible-galaxy init nginx
 ```
 ### Below is my directory structure.
 
+```
 .
 ├── nginx
 │   ├── defaults
@@ -36,6 +37,7 @@ ansible-galaxy init nginx
 │   └── vars
 │       └── main.yml
 └── playbook.yaml
+```
 
 ### Below is my playbook.yaml:
 ```
@@ -166,7 +168,8 @@ Added 18.222.227.133 with key /home/einfochips/Downloads/Faraz_Key_1.pem and use
 }
 ```
 ### This output proves that my python script is working completely fine.
-### So, now this is the time to run the playbook.
+### So, now this is the time to run the playbook. 
+### An important point to be emphasised here is that I have changed the default inventory path in the /etc/ansible/ansible.cfg to the absolute path of my python script.
 ```
 ansible-playbook playbook.yaml 
 ```
