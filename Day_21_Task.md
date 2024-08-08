@@ -1,5 +1,5 @@
 # Day 21:
-### In this task, I have created a few shelll scripts, ran prometheus on the docker container, download and added node exporter in the prometheus configuration file, ran a few PromQL commands.
+### In this task, I have created a few shelll scripts, ran prometheus on the docker container, download and added node exporter in the prometheus configuration file and ran a few PromQL commands.
 
 ### Shell scripts to perform basic system operations, such as checking disk usage, memory usage, and CPU load.
 ```
@@ -39,7 +39,7 @@ find "$ARCHIVE_DIR" -type f -name "*.gz" -mtime +$DAYS_TO_KEEP -exec rm -f "{}" 
 
 echo "Script executed successfully."
 ```
-### Refactoring of the previous scripts to include loops, conditionals and functions for modularity. Implement error handling to manage potential issues during script execution.
+### Refactoring of the above script to include loops, conditionals and functions for modularity. Implement error handling to manage potential issues during script execution.
 
 ```
 #!/bin/bash
@@ -155,11 +155,13 @@ echo "Script executed successfully."
 ```
 
 ### Installation of Prometheus:
-### I have used docker container for using Prometheus. I pulled an image named prom/prometheus and ran the container using it with the below command:
+### I have used docker container for using Prometheus. I pulled an image named "prom/prometheus" and ran the container using it with the below command:
 
 ```
 docker run -p 9090:9090 -itd prom/prometheus
 ```
+![alt text](images/Day_21_Images/Image_1)
+![alt text](images/Day_21_Images/Image_2)
 
 ### Set-up Node Exporter:
 ### For setting-up the Node exporter, I used an ec2 instance. I SSH into ec2 instance and ran a docker container with prometheous prom/node-exporter image. Then, I went into the prometheus configuration file using below command.
@@ -204,8 +206,11 @@ scrape_configs:
     static_configs:                 
       - targets: ["http://3.149.27.16:9100/"]
 ```
+![alt text](images/Day_21_Images/Image_6)
 
 ### Below image shows that both the targets are up and running.
+
+![alt text](images/Day_21_Images/Image_7)
 
 ### I have also created a series of PromQL queries to monitor system performance, such as CPU usage, memory usage, and disk I/O.
 
@@ -221,3 +226,15 @@ rate(node_disk_read_bytes_total[5m])
 rate(node_network_receive_bytes_total{device!="lo"}[5m])
 ```
 ### Below are the images showing the graphs of all the above shown commands.
+
+![alt text](images/Day_21_Images/Image_8)
+
+![alt text](images/Day_21_Images/Image_9)
+
+![alt text](images/Day_21_Images/Image_10)
+
+![alt text](images/Day_21_Images/Image_11)
+
+![alt text](images/Day_21_Images/Image_12)
+
+![alt text](images/Day_21_Images/Image_13)
