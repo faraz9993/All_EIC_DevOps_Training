@@ -1,9 +1,9 @@
 # Day 20:
 ### In this task, I have 
-### > Configured a dynamic inventory plugin to manage a growing number of web servers dynamically.
-### > Ansible performance by adjusting settings such as parallel execution (forks), optimizing playbook tasks, and reducing playbook run time.
+### > Configured a dynamic inventory plugin named 'amazon.aws.aws_ec2' to manage a growing number of web servers dynamically.
+### > Improved ansible performance by adjusting settings such as parallel execution usingforks, optimizing playbook tasks and reducing playbook run time using 'async'.
 ### > Included setting up verbose output.
-### > Used advanced Ansible modules such as docker_container to manage containerized applications.
+### > Used advanced Ansible modules such as docker_container and aws_ec2 to manage containerized applications and the web server.
 ### > Used asynchronous for 600 in install nginx task.
 
 ### Below is my tree structure, I have used for this task:
@@ -46,10 +46,10 @@ hostnames:
 compose:
   ansible_host: public_ip_address
 ```
-### Below is an image that shows the ping of the instance using aws_ec2.yaml iin the verbose mode.
+### Below is an image that shows the ping of the instance using aws_ec2.yaml in the verbose mode.
 ![alt text](images/Day_20_Images/Image_2)
 
-### Next I created main.yaml file which includes all the tasks to be executed on the target machine. Below is my /tasks/main.yaml file:
+### Next, I created main.yaml file which includes all the tasks to be executed on the target machine. Below is my /tasks/main.yaml file:
 
 ```
 - name: Install required Python packages in virtual environment
@@ -161,7 +161,7 @@ server {
 ```
 
 
-### Below is an image that shows all the tasks ran successfully:
+### Below is an image that shows all the tasks ran successfully on the target machine:
 
 ![alt text](images/Day_20_Images/Image_3)
 
