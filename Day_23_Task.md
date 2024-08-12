@@ -2,7 +2,7 @@
 
 ### In this task, I have created an IAM policy, attched that policy to an IAM role and also attched that policy to the IAM user. Later, I also estimated cost of 3 AWS services per annum.
 
-### The policy I created was in JSON format. The name I gave to the policy is DevTeamPolicy. Below is the JSON formatted policy:
+### The policy I created was in JSON format. The name I gave to the policy is DevTeamPolicy. Below is that JSON formatted policy:
 
 ```
 {
@@ -30,7 +30,7 @@
 
 ![alt text](images/Day_23_Images/Image_2)
 
-#### Next, I created a user named Test_User and attched the created policy with that user.
+### Next, I created a user named Test_User and attched the created policy with that user.
 
 ![alt text](images/Day_23_Images/Image_4)
 
@@ -38,7 +38,8 @@
 
 ![alt text](images/Day_23_Images/Image_5)
 
-### Furthermore, I also created an estimate on AWS pricing calculator service named My Estimate which gave the estimation of three services Elastic Load Balancer, Amazon EC2 instance of t3.medium and Amazon RDS of db.m5.large. The estimation was for a year. The total estimated cost was 18,208 USD as can be seen in the below image.
+### Furthermore, I also created an estimation on AWS pricing calculator service named "My Estimate" which gave the estimation of three services.
+### 1. Elastic Load Balancer 2. Amazon EC2 instance of t3.medium 3. Amazon RDS of db.m5.large. The estimation was for a year. The total estimated cost was 18,208 USD as can be seen in the below image.
 
 ![alt text](images/Day_23_Images/Image_3)
 
