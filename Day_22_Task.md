@@ -41,7 +41,7 @@ prometheuscommunity/postgres-exporter
 
 ![alt text](images/Day_22_Images/Image_6)
 
-### Next, I ran a few PromQL quesries in order to extract meaningful data from the metrics.
+### Next, I ran a few PromQL queries in order to extract meaningful data from the metrics.
 
 ```
 node_seconds_cpu_total
@@ -91,12 +91,12 @@ node_memory_MemTotal_bytes - node_memory_MemFree_bytes
 ```
 ![alt text](images/Day_22_Images/Image_13)
 
-### Next, I did the configuration of the Alert Manager. For that, first of all, I downloaded the package of alert maneger on my instance from the website using the belwo command:
+### Next, I did the configuration of the Alert Manager. For that, first of all, I downloaded the package of alert maneger on my instance from the official website using the below command:
 
 ```
 wget https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
 ```
-### Then I untared the package using below command:
+### Then, I untared the package using below command:
 ```
 tar -xvf 'alertmanager-0.27.0.linux-amd64.tar.gz'
 ```
