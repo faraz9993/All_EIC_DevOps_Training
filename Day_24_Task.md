@@ -2,11 +2,11 @@
 
 ### In this task, I have created and configured an S3 bucket, implemented S3 storage class, a lifecycle management for the static website, configured bucket policies and ACLs.
 
-### First of all, I created an S3 bucket with the name "techvista-portfolio-faraz".
+### First of all, I created an S3 bucket with the name "techvista-portfolio-faraz". While creating an S3 bucket I had kept ACL enabled.
 
 ![alt text](images/Day_24_Images/Image_1)
 
-### In this bucket, I have uploaded a content of the static website such as index.html and a folder with all the necassary pages.
+### In this bucket, I have uploaded a content of the static website such as index.html and a folder with all the necassary pages. After selecting all the objects, I made them publicly accessible by getting into the actions.
 
 ![alt text](images/Day_24_Images/Image_2)
 
