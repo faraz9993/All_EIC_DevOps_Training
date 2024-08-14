@@ -36,7 +36,7 @@ systemctl restart apache2.service
 
 ![alt text](images/Day_25_Images/Image_9)
 
-### After, Successful configuration, the below urls were showing their respective webpages.
+### After the successful configuration, the below urls were showing their respective webpages.
 
 ![alt text](images/Day_25_Images/Image_11)
 ![alt text](images/Day_25_Images/Image_10)
