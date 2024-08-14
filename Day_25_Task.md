@@ -6,7 +6,7 @@
 ![alt text](images/Day_25_Images/Image_1)
 
 
-### The webpages can be seen in the below images.
+### The webpages can be seen in the below images using the public IP of both the instances.
 ![alt text](images/Day_25_Images/Image_6)
 ![alt text](images/Day_25_Images/Image_7)
 
@@ -14,7 +14,7 @@
 
 ![alt text](images/Day_25_Images/Image_8)
 
-### I also made changes in the configuration file etc/apache2/sites-available/000-default.conf of the apache server of both the instances as below:
+### I created below directories for the purpose of meeting the task requirements:
 
 ### For instance 1:
 ```
@@ -32,13 +32,11 @@ mkdir -p /var/www/html/app2/index.html
 systemctl restart apache2.service
 ```
 
-### Similar for the other instance.
-
 ### Furthermore, after the creation of the load balancer, I defined the rules as follow.
 
 ![alt text](images/Day_25_Images/Image_9)
 
-### After, Successful configuration, the below url were redirected to their respective webpages.
+### After, Successful configuration, the below urls were showing their respective webpages.
 
 ![alt text](images/Day_25_Images/Image_11)
 ![alt text](images/Day_25_Images/Image_10)
