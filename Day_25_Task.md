@@ -3,7 +3,7 @@
 
 ### So, first of all, I created two ec2 instances Faraz_Instance_1 and Faraz_Instance_2 in AWS and configured webpages for them.
 
-![alt text](images/Day_25_Images/Image_2)
+![alt text](images/Day_25_Images/Image_1)
 
 
 ### The webpages can be seen in the below images.
