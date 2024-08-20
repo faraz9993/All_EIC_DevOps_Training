@@ -105,7 +105,7 @@ FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
 
 ![alt text](images/Day_26_Images/Image_35)
 
-### When, we would click on the Add button, we will be taken to the below page:
+### When, we would click on the "Add" button, we will be taken to the below page:
 
 ![alt text](images/Day_26_Images/Image_34)
 
