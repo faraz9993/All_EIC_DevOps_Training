@@ -14,7 +14,10 @@
 
 ![alt text](images/Day_26_Images/Image_9)
 
-### However, only naming subnets as public or private isn't gonna make it public or private. We have to configure subnet association with Internet Gateway using the route table, in order to make them public.
+### However, only naming subnets as public or private isn't gonna make it public or private. We have to configure subnet association with Internet Gateway using the route table, in order to make them public. So, I created two route tables as well.
+
+### 1. Public Route Table
+### 2. Private Route Table
 
 ### So, I created an Internet Gateway first named "Faraz_IGW".
 
@@ -24,7 +27,7 @@
 
 ![alt text](images/Day_26_Images/Image_12)
 
-### I also added this IGW route in the Puclic Subnet with destinition 0.0.0.0/0 . 
+### I also added this IGW route in the Puclic Route Table with destinition 0.0.0.0/0 . 
 
 ### The security group that I used is named as "Faraz_SG" and it has inbound rule of HTTP, HTTPS and SSH and outbound rule with "All traffic".
 
