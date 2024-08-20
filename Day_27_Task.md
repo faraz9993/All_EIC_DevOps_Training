@@ -196,10 +196,6 @@ Resources:
 
 ### Below are images of the resources created using above stack.yaml file:
 
-![alt text](images/Day_27_Images/Image_1)
-
-![alt text](images/Day_27_Images/Image_2)
-
 ![alt text](images/Day_27_Images/Image_3)
 
 ![alt text](images/Day_27_Images/Image_4)
@@ -207,5 +203,9 @@ Resources:
 ![alt text](images/Day_27_Images/Image_5)
 
 ![alt text](images/Day_27_Images/Image_6)
+
+![alt text](images/Day_27_Images/Image_1)
+
+![alt text](images/Day_27_Images/Image_2)
 
 ![alt text](images/Day_27_Images/Image_7)
