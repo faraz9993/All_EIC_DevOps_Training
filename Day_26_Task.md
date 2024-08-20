@@ -2,7 +2,7 @@
 
 ### In this task, I have designed, deployed and managed a comprehensive and scalable Employee Web Application on AWS. The project integrates multiple AWS services, including S3, EC2, Auto Scaling, Load Balancer, VPC (without NAT Gateway) and RDS. The platform is highly available, secure and optimized for performance.
 
-### So, first of all, I created a VPC named Faraz_VPC. The entire operation is done in us-west-2 region.
+### So, first of all, I created a VPC named Faraz_VPC. The entire operation is done in us-west-2 region which is Oregon.
 
 ![alt text](images/Day_26_Images/Image_8)
 
