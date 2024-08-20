@@ -1,4 +1,4 @@
-Below is my stack.yaml file which will create resources such as VPC, Subnet, Route table, EC2 Instance, S3 Bucket and the RDS.
+### Below is my stack.yaml file which will create resources such as VPC, Subnet, Route table, Security Groups for the relavent resources, EC2 Instance, S3 Bucket and the RDS.
 
 ```
 Parameters:
@@ -57,7 +57,6 @@ Parameters:
     Description: Unique name for the S3 bucket.
 
 Resources:
-  # VPC
   CustomVPC:
     Type: AWS::EC2::VPC
     Properties:
@@ -68,18 +67,15 @@ Resources:
       - Key: Name
         Value: CustomVPC
 
-  # Internet Gateway
   MyInternetGateway:
     Type: AWS::EC2::InternetGateway
 
-  # Attach Internet Gateway to VPC
   AttachGateway:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       VpcId: !Ref CustomVPC
       InternetGatewayId: !Ref MyInternetGateway
 
-  # Public Subnet
   PublicSubnet:
     Type: AWS::EC2::Subnet
     Properties:
@@ -91,7 +87,6 @@ Resources:
       - Key: Name
         Value: PublicSubnet
 
-  # Private Subnet
   PrivateSubnet:
     Type: AWS::EC2::Subnet
     Properties:
@@ -102,7 +97,6 @@ Resources:
       - Key: Name
         Value: PrivateSubnet
 
-    # Private Subnet 2
   PrivateSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
@@ -113,7 +107,6 @@ Resources:
       - Key: Name
         Value: PrivateSubnet2
 
-  # Route Table for Public Subnet
   PublicRouteTable:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -122,7 +115,6 @@ Resources:
       - Key: Name
         Value: PublicRouteTable
 
-  # Route to Internet Gateway for Public Subnet
   PublicRoute:
     Type: AWS::EC2::Route
     Properties:
@@ -130,14 +122,12 @@ Resources:
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref MyInternetGateway
 
-  # Associate Public Subnet with Route Table
   PublicSubnetRouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId: !Ref PublicSubnet
       RouteTableId: !Ref PublicRouteTable
 
-  # Security Group for EC2 instance
   EC2SecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -149,7 +139,6 @@ Resources:
         ToPort: '80'
         CidrIp: 0.0.0.0/0
 
-  # Security Group for RDS instance
   RDSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -161,7 +150,6 @@ Resources:
         ToPort: '3306'
         SourceSecurityGroupId: !Ref EC2SecurityGroup
 
-  # EC2 Instance
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
@@ -170,7 +158,6 @@ Resources:
       SecurityGroupIds:
       - !Ref EC2SecurityGroup
       SubnetId: !Ref PublicSubnet
-      # IamInstanceProfile: !Ref EC2InstanceProfile
       ImageId: !Ref AMIId
       UserData: !Base64
         Fn::Sub: |
@@ -180,13 +167,11 @@ Resources:
           systemctl start apache2
           systemctl enable apache2
 
-  # S3 Bucket
   MyS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Ref S3BucketName
 
-  # RDS MySQL DB Instance
   MyRDSInstance:
     Type: AWS::RDS::DBInstance
     Properties:
@@ -199,7 +184,6 @@ Resources:
       VPCSecurityGroups:
       - !Ref RDSSecurityGroup
 
-  # DB Subnet Group
   DBSubnetGroup:
     Type: AWS::RDS::DBSubnetGroup
     Properties:
@@ -210,7 +194,7 @@ Resources:
 
 ```
 
-Below are the images of teh resources created using above stack.yaml file:
+### Below are images of the resources created using above stack.yaml file:
 
 ![alt text](images/Day_27_Images/Image_1)
 
