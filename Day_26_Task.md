@@ -109,7 +109,7 @@ FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
 
 ![alt text](images/Day_26_Images/Image_34)
 
-### After, fulfilling the mentioned detils, we can see that the uploaded image is saved in the S3 Bucket named "shopmax-static-conetnt-faraz".
+### After, filling-up the mentioned detils, we can see that the uploaded image is saved in the S3 Bucket named "shopmax-static-conetnt-faraz".
 
 ![alt text](images/Day_26_Images/Image_36)
 
