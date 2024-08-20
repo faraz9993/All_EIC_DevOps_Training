@@ -19,7 +19,7 @@
 ### 1. Public Route Table
 ### 2. Private Route Table
 
-### So, I created an Internet Gateway first named "Faraz_IGW".
+### Next, I created an Internet Gateway first named "Faraz_IGW".
 
 ![alt text](images/Day_26_Images/Image_15)
 
