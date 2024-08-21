@@ -1,6 +1,6 @@
-### In this task, I have deployed a multi-tier architecture application on AWS using Terraform. The deployment involves Terraform variables, outputs and change sets. The multi-tier architecture includes an EC2 instance, an RDS MySQL DB instance and an S3 bucket.
+### In this task, I have deployed a multi-tier architecture application on AWS using Terraform. The deployment involves Terraform main.tf file, variables.tf and change sets. The multi-tier architecture includes an VPC, Subnets, Route Table, Internet gateway, EC2 instance, an RDS MySQL DB instance and an S3 bucket.
 
-### So, first of all, I configured AWS with my local machine so that resources can be created on the cloud platform.
+### So, first of all, I configured AWS with my local machine so that resources can be created on the cloud platform from my local machine.
 
 ```
 aws configure
@@ -11,7 +11,7 @@ AWS Secret Access Key:
 Default region name: us-east-2
 Default output format: json
 ```
-### After that I created terraform main.tf file which is as per below:
+### After that I created terraform main.tf file which is below:
 
 ```
 provider "aws" {
@@ -240,38 +240,39 @@ variable "db_password" {
   default     = "XXXXXXXXX" # Enter your Password here.
 }
 ```
-### As per above terraform main.tf and variables.tf file a VPC will be created in which there would be 4 subnets, 2 public and 2 private. Out of two public subnets, one will have an EC2 instance and out of two private subnets one will have an RDS.
+### As per above terraform main.tf and variables.tf file, a VPC will be created in which there would be 4 subnets, 2 public and 2 private. Out of two public subnets, one will have an EC2 instance and out of two private subnets one will have an RDS.
 
-### As soon as, we will run terraform init, terraform plan and terraform apply command a terraform.tfstate file will be created by default and it is basically a JSON file that stores information about the infrastructure and the configuration.
+### As soon as, we will run terraform init, terraform plan and terraform apply command, a terraform.tfstate file will be created by default and it is basically a JSON file that stores information about the infrastructure and the configuration.
 
-### The resources will get created with the configurations mentioned as above.
+### The resources will get created on AWS with the configurations mentioned as above.
 
 ### Below is the image of WebServer get created from main.tf file:
 
 ![alt text](images/Day_28_Images/Image_1)
 
-### For the change set, I made a minor change in the Terraform configuration, such as modifying an EC2 instance tag from WebServer to Faraz-Server and it did reflected on the cloud as can be seen in the below image.
+### For the change set, I made a minor change in the Terraform configuration, such as modifying an EC2 instance tag from WebServer to Faraz-Server and it did reflect on the cloud as can be seen in the below image.
 
 ![alt text](images/Day_28_Images/Image_2)
 
-### I have kept MySQL RDS in the private subnet so no other instance out of the VPC will be able to connect with the RDS only the instances within that VPC will get connect with the RDS. So, for the testing purpose, I tried connecting to the instance using RDS which did get connect as can be seen in the below image:
+### I have kept MySQL RDS in the private subnet so no other instance out of the VPC will be able to connect with the RDS. Only the instances within that VPC will get connect with the RDS. So, for the testing purpose, I tried connecting to the instance using RDS which did get connect as can be seen in the below image:
 
 ![alt text](images/Day_28_Images/Image_4)
 
-### The command I entered to get connected is below:
+### The command, I entered to get connected to the RDS is below:
 
 ```
-mysql -h <Database_Endpoint> -u <User_Name> -p
+mysql -h <database_endpoint> -u <user_name> -p
 ```
 
 ### Next, I tested that whether EC2 instance can read and write to the S3 bucket or not. Turned out, EC2 instance do have the read/write permission for the S3 bucket as can be seen in the below image.
 
-### The commands I ran in the EC2 instance for the testing-purpose are as below:
+### The commands, I ran in the EC2 instance for the testing-purpose are as below:
 
 ```
 echo "Hello There" > testfile.txt
 aws s3 cp testfile.txt s3://kauserbucket/
 aws s3 ls s3://kauserbucket/
-aws s3 rm s3://kauserbucket/testfile.txt
 ```
 ![alt text](images/Day_28_Images/Image_6)
+
+### The successful execution of "aws s3 ls" and "aws s3 cp" command proves that EC2 instance does have read/write permission to the S3 bucket.
