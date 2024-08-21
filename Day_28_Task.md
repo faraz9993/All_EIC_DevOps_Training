@@ -11,7 +11,7 @@ AWS Secret Access Key:
 Default region name: us-east-2
 Default output format: json
 ```
-### After that I created terraform main.tf file which is below:
+### After that, I created terraform main.tf file which is below:
 
 ```
 provider "aws" {
