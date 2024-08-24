@@ -624,9 +624,9 @@ terraform apply -var-file="dev.tfvars"
 ![alt text](images/Day_30_Images/Image_3)
 ![alt text](images/Day_30_Images/Image_4)
 
-### Then, I started the work on prod environment. Similarly, as default configuartion and the staging configuration, I created the workspace for the productoin environment:
+### Then, I started the work on prod environment. Similarly, as default configuartion and the staging configuration, I created the workspace for the productoin environment.
 
-![alt text](images/Day_30_Images/Image_5)
+![alt text](images/Day_30_Images/Image_8)
 
 ### Afterwards, I created a user named prod_user, created its access key and secret access key and logged in using its credentials using below command:
 
