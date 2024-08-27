@@ -1,5 +1,5 @@
 # Day 32:
-### In this task, I have setted up an ECS cluster, defining task definitions, creating services and ensuring proper networking and security configurations using VPC, subnets, security groups and IAM roles.
+### In this task, I have configured an ECS cluster, defining task definitions, creating services and ensuring proper networking and security configurations using VPC, subnets and security groups using terraform.
 ### Below is my tree structure for all the files.:
 
 ```
@@ -11,6 +11,10 @@
 │   ├── main.tf
 │   ├── outputs.tf
 │   └── variables.tf
+├── iam
+│   ├── main.tf
+│   ├── outputs.tf
+│   └── variables.tf
 ├── rds
 │   ├── main.tf
 │   ├── outputs.tf
@@ -19,13 +23,14 @@
 │   ├── main.tf
 │   ├── outputs.tf
 │   └── variables.tf
-└── vpc
-    ├── main.tf
-    ├── outputs.tf
-    └── variables.tf
-```
-### main.tf:
+├── vpc
+│   ├── main.tf
+│   ├── outputs.tf
+│   └── variables.tf
 
+```
+
+### main.tf:
 ```
 provider "aws" {
   region  = "us-east-2"
@@ -70,122 +75,11 @@ module "rds" {
   vpc_security_group_id = module.security_groups.rds_security_group_id
   private_subnets       = module.vpc.private_subnets
 }
-```
-### sg/main.tf:
-```
-resource "aws_security_group" "alb" {
-  name   = "${var.name}-sg-alb-${var.environment}"
-  vpc_id = var.vpc_id
 
-  ingress {
-    protocol         = "tcp"
-    from_port        = 80
-    to_port          = 80
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  ingress {
-    protocol         = "tcp"
-    from_port        = 443
-    to_port          = 443
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  egress {
-    protocol         = "-1"
-    from_port        = 0
-    to_port          = 0
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-}
-
-resource "aws_security_group" "ecs_tasks" {
-  name   = "${var.name}-sg-task-${var.environment}"
-  vpc_id = var.vpc_id
-
-  ingress {
-    protocol         = "tcp"
-    from_port        = var.container_port
-    to_port          = var.container_port
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  egress {
-    protocol         = "-1"
-    from_port        = 0
-    to_port          = 0
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-}
-
-resource "aws_security_group" "rds" {
-  name   = "${var.name}-sg-rds-${var.environment}"
-  vpc_id = var.vpc_id
-
-  ingress {
-    protocol         = "tcp"
-    from_port        = 3306
-    to_port          = 3306
-    cidr_blocks      = ["0.0.0.0/0"]
-  }
-
-  egress {
-    protocol         = "-1"
-    from_port        = 0
-    to_port          = 0
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
+module "iam" {
+  source                = "./iam"
 }
 ```
-
-### sg/variables.tf:
-```
-variable "vpc_id" {
-  description = "The ID of the VPC"
-  type        = string
-}
-
-variable "container_port" {
-  description = "The port on which the container is running"
-  type        = number
-}
-
-variable "name" {
-  description = "The name prefix for resources"
-  type        = string
-}
-
-variable "environment" {
-  description = "The environment name (e.g., dev, prod)"
-  type        = string
-}
-```
-
-### sg/outputs.tf:
-```
-output "alb_security_group_id" {
-  value = aws_security_group.alb.id
-}
-
-output "ecs_security_group_id" {
-  value = aws_security_group.ecs_tasks.id
-}
-
-output "rds_security_group_id" {
-  value = aws_security_group.rds.id
-}
-
-```
-
-
-
-
 ### variables.tf:
 ```
 variable "cidr" {
@@ -286,6 +180,8 @@ variable "db_password" {
   type        = string
   default = "MySecurePassword123!"
 }
+
+
 ```
 
 ### outputs.tf:
@@ -305,8 +201,214 @@ output "ecs_cluster_id" {
 output "rds_endpoint" {
   value = module.rds.rds_endpoint
 }
+
 ```
+
+### sg/main.tf:
+```
+resource "aws_security_group" "alb" {
+  name   = "${var.name}-sg-alb-${var.environment}"
+  vpc_id = var.vpc_id
+
+  ingress {
+    protocol         = "tcp"
+    from_port        = 80
+    to_port          = 80
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    protocol         = "tcp"
+    from_port        = 443
+    to_port          = 443
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    protocol         = "-1"
+    from_port        = 0
+    to_port          = 0
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+}
+
+resource "aws_security_group" "ecs_tasks" {
+  name   = "${var.name}-sg-task-${var.environment}"
+  vpc_id = var.vpc_id
+
+  ingress {
+    protocol         = "tcp"
+    from_port        = var.container_port
+    to_port          = var.container_port
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    protocol         = "-1"
+    from_port        = 0
+    to_port          = 0
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+}
+
+resource "aws_security_group" "rds" {
+  name   = "${var.name}-sg-rds-${var.environment}"
+  vpc_id = var.vpc_id
+
+  ingress {
+    protocol         = "tcp"
+    from_port        = 3306
+    to_port          = 3306
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    protocol         = "-1"
+    from_port        = 0
+    to_port          = 0
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+}
+
+```
+### sg/variables.tf:
+```
+variable "vpc_id" {
+  description = "The ID of the VPC"
+  type        = string
+}
+
+variable "container_port" {
+  description = "The port on which the container is running"
+  type        = number
+}
+
+variable "name" {
+  description = "The name prefix for resources"
+  type        = string
+}
+
+variable "environment" {
+  description = "The environment name (e.g., dev, prod)"
+  type        = string
+}
+
+```
+
+### sg/outputs.tf:
+```
+output "alb_security_group_id" {
+  value = aws_security_group.alb.id
+}
+
+output "ecs_security_group_id" {
+  value = aws_security_group.ecs_tasks.id
+}
+
+output "rds_security_group_id" {
+  value = aws_security_group.rds.id
+}
+```
+
+### iam/main.tf:
+```
+resource "aws_iam_role" "ecs_task_role" {
+  name = "${var.name}-ecsTaskRole"
+ 
+  assume_role_policy = <<EOF
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+     "Action": "sts:AssumeRole",
+     "Principal": {
+       "Service": "ecs-tasks.amazonaws.com"
+     },
+     "Effect": "Allow",
+     "Sid": ""
+   }
+ ]
+}
+EOF
+}
+ 
+resource "aws_iam_policy" "dynamodb" {
+  name        = "${var.name}-task-policy-dynamodb"
+  description = "Policy that allows access to DynamoDB"
+ 
+ policy = <<EOF
+{
+   "Version": "2012-10-17",
+   "Statement": [
+       {
+        "Effect": "Allow",
+           "Action": [
+               "dynamodb:CreateTable",
+               "dynamodb:UpdateTimeToLive",
+               "dynamodb:PutItem",
+               "dynamodb:DescribeTable",
+               "dynamodb:ListTables",
+               "dynamodb:DeleteItem",
+               "dynamodb:GetItem",
+               "dynamodb:Scan",
+               "dynamodb:Query",
+               "dynamodb:UpdateItem",
+               "dynamodb:UpdateTable"
+           ],
+           "Resource": "*"
+       }
+   ]
+}
+EOF
+}
+ 
+resource "aws_iam_role_policy_attachment" "ecs-task-role-policy-attachment" {
+  role       = aws_iam_role.ecs_task_role.name
+  policy_arn = aws_iam_policy.dynamodb.arn
+}
+
+resource "aws_iam_role" "ecs_task_execution_role" {
+  name = "${var.name}-ecsTaskExecutionRole"
+ 
+  assume_role_policy = <<EOF
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+     "Action": "sts:AssumeRole",
+     "Principal": {
+       "Service": "ecs-tasks.amazonaws.com"
+     },
+     "Effect": "Allow",
+     "Sid": ""
+   }
+ ]
+}
+EOF
+}
+ 
+resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attachment" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+```
+### iam/variables.tf:
+```
+variable "name" {
+  description = "The name prefix for resources"
+  type        = string
+  default     = "faraz"
+}
+```
+
 ### vpc/main.tf:
+
 ```
 resource "aws_vpc" "main" {
   cidr_block = var.cidr
