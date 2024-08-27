@@ -1,5 +1,5 @@
 # Day 32:
-### In this task, I have configured an ECS cluster, defining task definitions, creating services and ensuring proper networking and security configurations using VPC, subnets and security groups using terraform.
+### In this task, I have configured an ECS cluster, defining task definitions, creating services and ensuring proper networking and security configurations using VPC, subnets, security groups, IAM roles using terraform.
 ### Below is my tree structure for all the files.:
 
 ```
