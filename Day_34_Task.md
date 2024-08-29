@@ -112,7 +112,7 @@ sha256:fbae27c7df64e11ecd49d0b5980128e6aec48ab5ebedd4f5ffe2ac371010cae0
 ![alt text](images/Day_34_Images/Image_1)
 
 # Grafana Installation
-### Below are the commands, I used ot install the grafana:
+### Below are the commands, I used to install grafana:
 
 ```
 sudo apt-get update
