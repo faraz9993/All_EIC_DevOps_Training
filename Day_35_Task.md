@@ -71,7 +71,7 @@ spec:
   ports:
   - protocol: TCP
     port: 3000
-    nodePort: 30009
+    nodePort: 30001
 
 kubectl apply -f ~/grafana-ext.yml
 
