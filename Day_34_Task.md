@@ -105,6 +105,7 @@ sudo kubeadm join 172.31.16.219:6443 --token 5eo92k.2j079qbms0wwvw2n     --disco
 
 sha256:fbae27c7df64e11ecd49d0b5980128e6aec48ab5ebedd4f5ffe2ac371010cae0
 ```
+### The successful creation of kubeadm cluster can be seen in the below images:
 
 ![alt text](images/Day_33_Images/Image_2)
 
