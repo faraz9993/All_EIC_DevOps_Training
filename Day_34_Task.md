@@ -2,7 +2,7 @@
 
 ### In this task, I have installed kubeadm using 2 EC2 instances.
 ### For control plane, I have used t2.medium and for data plane I have used t2.micro.
-### The commands I ran on control plane are as below:
+### The commands, I ran on control plane are as below:
 
 ```
 sudo apt-get update
@@ -63,7 +63,7 @@ kubectl get nodes
 
 ```
 
-### The commands I ran on data plane are as below:
+### The commands, I ran on data plane are as below:
 ```
 sudo apt-get update
 
@@ -107,9 +107,9 @@ sha256:fbae27c7df64e11ecd49d0b5980128e6aec48ab5ebedd4f5ffe2ac371010cae0
 ```
 ### The successful creation of kubeadm cluster can be seen in the below images:
 
-![alt text](images/Day_33_Images/Image_2)
+![alt text](images/Day_34_Images/Image_2)
 
-![alt text](images/Day_33_Images/Image_1)
+![alt text](images/Day_34_Images/Image_1)
 
 # Grafana Installation
 ### Below are the commands, I used ot install the grafana:
