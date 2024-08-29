@@ -111,7 +111,27 @@ sha256:fbae27c7df64e11ecd49d0b5980128e6aec48ab5ebedd4f5ffe2ac371010cae0
 
 ![alt text](images/Day_34_Images/Image_1)
 
-# Grafana Installation
+# Prometheus Installation:
+### In order to install Prometheus, first of all, I downloaded the Prometheus package from the below url:
+
+```
+https://prometheus.io/download/
+```
+
+### After downloading the prometheus, I went to the dirctory where the package was downloaded.
+### Then, I ran the below given commands:
+
+```
+tar xvfz prometheus-*.tar.gz
+cd prometheus-*
+./prometheus --config.file=prometheus.yml
+```
+
+### After running these commands, Prometheus was accessible on port 9090 as can be seen in the below image:
+
+![alt text](images/Day_34_Images/Image_4)
+
+# Grafana Installation:
 ### Below are the commands, I used to install grafana:
 
 ```
@@ -143,3 +163,4 @@ sudo systemctl enable grafana-server.service
 ### Grafana was successfully installed as can be seen in the below image:
 
 ![alt text](images/Day_34_Images/Image_3)
+
