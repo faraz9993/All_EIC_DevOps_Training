@@ -109,3 +109,36 @@ sha256:fbae27c7df64e11ecd49d0b5980128e6aec48ab5ebedd4f5ffe2ac371010cae0
 ![alt text](images/Day_33_Images/Image_2)
 
 ![alt text](images/Day_33_Images/Image_1)
+
+# Grafana Installation
+### Below are the commands, I used ot install the grafana:
+
+```
+sudo apt-get update
+
+sudo apt-get install -y software-properties-common
+
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install grafana
+
+sudo systemctl start grafana-server
+
+sudo systemctl start grafana
+
+sudo systemctl start grafana-server
+
+sudo systemctl status grafana-server.service
+
+sudo systemctl start grafana-server.service
+
+sudo systemctl enable grafana-server.service
+```
+
+### Grafana was successfully installed as can be seen in the below image:
+
+![alt text](images/Day_34_Images/Image_3)
