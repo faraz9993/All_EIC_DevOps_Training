@@ -1,5 +1,7 @@
 # Day 35:
 
+### In this task, I have deployed a Kubernetes application on AWS EC2 instances and set up a monitoring stack using Prometheus and Grafana. This project is designed to test the knowledge of deploying and configuring monitoring solutions in a Kubernetes environment on AWS
+
 ### For this task, First of all, I created 3 EC2 instances. One for control plane which was t2.medium and a couple for data plane which were t2.micro.
 
 ![alt text](images/Day_35_Images/Image_1)
@@ -53,8 +55,30 @@ helm install grafana grafana/grafana -f ~/grafana-values.yml --namespace grafana
 kubectl get all -n grafana
 
 ```
+### To deploy a NodePort Service to Provide External Access to Grafana.
+```
+vi grafana-ext.yml
 
-### After running the above commands, all the Grafana was succesfully deployed as can be seen in the below image. 
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: grafana
+  name: grafana-ext
+spec:
+  type: NodePort
+  selector:
+    app: grafana
+  ports:
+  - protocol: TCP
+    port: 3000
+    nodePort: 30009
+
+kubectl apply -f ~/grafana-ext.yml
+
+```
+
+
+### After running the above commands, the Grafana was succesfully deployed as can be seen in the below image. 
 
 ![alt text](images/Day_35_Images/Image_9)
 ![alt text](images/Day_35_Images/Image_12)
