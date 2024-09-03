@@ -1,23 +1,8 @@
 # Final Assessment Task:
 
-### In this task, I have used deploy a modular e-commerce application using AWS services and DevOps tools.
+### In this task, I have succesfully deployed a modular e-commerce application using AWS services and DevOps tools.
 
-### First of all, I created terraform files to create below resources on AWS:
-```
-1. VPC
-2. Security Groups
-3. IAM Role
-4. EC2 Instance (X3)
-5. S3 Bucket
-```
-
-### When, the resources were successfully created on AWS, I created an e-commerce application using CSS/HTML. I dockerized the code and pushed the image to Docker hub using Jenkins pipeline with groovy language which was fetching the code from the GitHub.
-
-### Then, I deployed the K8S kubeadm cluster on 3 EC2 instances out of which one was Control Plane and other two were Data Plane. I uaes ANsible for deploying the kubeadm cluster.
-
-### After that, I used the helm chart to successfully deploy my application and make it available to the end-users.
-
-### The tools I used for this deployment are:
+### The tools I used for this project are:
 
 ```
 1. AWS
@@ -30,7 +15,22 @@
 8. Helm Chart
 ```
 
-### Below is my terraform files for creating the resorces on AWS:
+### So, first of all, I created terraform files to create below resources on AWS:
+```
+1. VPC
+2. Security Groups
+3. IAM Role
+4. EC2 Instance (X3)
+5. S3 Bucket
+```
+
+### When, the resources were successfully created on AWS, I created an e-commerce application using CSS/HTML. I dockerized the code and pushed the image to Docker hub using Jenkins pipeline with groovy language which was fetching the code from the GitHub.
+
+### Then, I deployed the K8S kubeadm cluster on 3 EC2 instances out of which one was control plane and other two were data planes. I used ansible for deploying the kubeadm cluster.
+
+### After that, I used the helm chart to successfully deploy my application and make it available to the end-users.
+
+### Below are my terraform files and file structure for creating the resorces on AWS:
 
 ```
 .
@@ -628,7 +628,7 @@ variable "additional_tags" {
 }
 ```
 
-### This files will create all the resources successfully on the AWS with proper networking configuration as can be seen in the below images:
+### These files will create all the resources successfully on the AWS with proper networking configuration as can be seen in the below images:
 
 ![alt text](images/Final_Assessment/Image_3)
 ![alt text](images/Final_Assessment/Image_4)
@@ -679,7 +679,7 @@ variable "additional_tags" {
 </body>
 </html>
 ```
-### This is my nginx.conf:
+### This is my nginx.conf file:
 ```
 events {
     worker_connections 1024;
@@ -699,7 +699,7 @@ http {
 
 ```
 
-### I Dockerized the above code using below Dockerfile:
+### I dockerized the above code using below Dockerfile:
 ```
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -708,7 +708,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-### This is Jenkinsfile:
+### This is my Jenkinsfile:
 ```
 node {
     def dockerRegistry = 'https://registry.hub.docker.com'
@@ -750,12 +750,12 @@ node {
 
 ![alt text](images/Final_Assessment/Image_5)
 
-### I configured the Jenkins pipeline to fetch the files form this git hub repo which will build the dockerfile and push it to my docker repository succesffully as can be seen in the below image.
+### I configured the Jenkins pipeline to fetch the files form this git hub repo which will build the docker image and push it to my docker repository succesffully as can be seen in the below images.
 
 ![alt text](images/Final_Assessment/Image_6)
 ![alt text](images/Final_Assessment/Image_7)
 
-### The next step is to deploy kubeadm cluster on 3 EC2 instances using Ansible.
+### The next step is to deploy kubeadm cluster with 3 EC2 instances using Ansible.
 
 ### For that below is my inventory:
 ```
@@ -853,7 +853,7 @@ ansible-playbook main.yaml -i inventory
 
 ![alt text](images/Final_Assessment/Image_8)
 
-### Next, I have to deploy the application on k8s cluster using helm chart with the docker image, I pushed earlier in the docker hub.
+### Next, I have to deploy the application on k8s cluster using helm chart with the Dockerimage, I pushed earlier in the docker hub.
 
 ### For that, I installed helm chart manually on the control plane using below given three commands:
 
@@ -863,7 +863,7 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
-### Once, the helm chart was successfully, installed I created a Helm chart using the below command:
+### Once, the helm chart was successfully installed, I created a Helm chart using the below command:
 ```
 helm create my-nginx-chart
 ```
@@ -980,24 +980,23 @@ tolerations: []
 
 affinity: {}
 ```
-### After, this configuration, I install the helm chart using the below command:
+### After, this configuration, I deployed the helm chart using the below command:
 ```
 helm install my-nginx-release ./my-nginx-chart
 ```
 
-### This way, I successfully, deployed the application on the helm chart as it created the service, deployment and the pods in the running state, as can be seen in the below image:
+### This way, I successfully, deployed the application on the k8s cluster which created the service, deployment and the pods in the running state, as can be seen in the below image:
 
 ![alt text](images/Final_Assessment/Image_9)
 
-### I ran the command, 
+### I ran the below command, to know that on which data plane, my application has been deployed.
 ```
 kubectl get pods -o wide
 ```
-### This command, gave me the output that on which data plane, my application as has been deployed.
 
 ![alt text](images/Final_Assessment/Image_11)
 
-### I matched the private IP address with the Public IP address and hit it on the browser with the port number on which my application is forwarded as can be seen in the image above. 
+### I matched the Private IP address with the Public IP address on the console and hit it on the browser with the port number on which my application is forwarded as can be seen in the image above. 
 
 ![alt text](images/Final_Assessment/Image_12)
 
